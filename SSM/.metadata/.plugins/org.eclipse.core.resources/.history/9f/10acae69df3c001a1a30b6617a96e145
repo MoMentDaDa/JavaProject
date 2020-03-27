@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 不同的mapper文件的namespace是不一样的. 如果使用Mapper接口应使用其对应的dao全限定名称 -->
+<mapper namespace="com.wang.Mapper.ClientMapper">
+
+	<resultMap type="Client" id="ClientResultMap">
+		<id column="id" property="id" />
+		<result column="username" property="name" />
+		<result column="password" property="password" />
+	</resultMap>
+
+	<select id="login1" parameterType="com.wang.Params.LoginVO" resultMap="ClientResultMap">
+		SELECT id,username,password FROM client WHERE username=#{name} and password=#{password}
+	</select>
+	
+	<!-- #后面跟Map的KEY名 -->
+	<select id="login2" parameterType="map" resultMap="ClientResultMap">
+		SELECT id,username,password FROM client WHERE username=#{name} and password=#{password}
+	</select>
+
+	
+	<!-- #后面跟Map的KEY名 -->
+	<select id="login3" resultMap="ClientResultMap">
+		SELECT id,username,password FROM client WHERE username=#{name} and password=#{password} 
+	</select>
+	
+		
+	<!-- $会自动给参数加单引号 -->
+	<select id="list" resultMap="ClientResultMap">
+		SELECT id,username,password FROM client order by ${orderby}
+	</select>
+
+</mapper>

@@ -1,0 +1,5 @@
+package ByAnno.exception;
+
+public class Handexception {
+
+}

@@ -1,0 +1,30 @@
+package ScopeDemo;
+
+import java.io.IOException;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/context")
+public class ServletContextDemo extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// 三种方式获取ServletContext的方式,一个应用只有一个ServletContext对象
+		ServletContext app1 = req.getServletContext();
+		ServletContext app2 = super.getServletContext();
+		ServletContext app3 = req.getSession().getServletContext();
+		System.out.println(app1 == app2 && app2 == app3);
+		// 常用方法
+		System.out.println("realPath:" + app1.getRealPath("/WEB-INF/webinf/html"));// 获取项目的真实地址
+		System.out.println("realPath:" + app1.getRealPath("/servletcontext"));
+		System.out.println(app1.getInitParameter("encoding"));//获取全局参数设置值，但不能获取局部初始化参数
+		System.out.println(super.getInitParameter("encoding"));
+	}
+
+}

@@ -1,0 +1,52 @@
+package xmlTest;
+
+import java.io.File;
+import java.net.URL;
+import java.util.Properties;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.junit.Test;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
+public class DOM_Test {
+//获取Document对象，并打印第二个内容
+	@Test
+	public void test1() throws Exception {
+		File f = new File("C:\\Users\\汪哒哒\\Documents\\JavaProject\\JavaReinforce\\ReinForce\\resources\\Students.xml");
+		// 获取Document对象,因为xml已经存在，所以可以直接调用parse解析到内存中即可
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder d = factory.newDocumentBuilder();
+		Document dou = d.parse(f);
+		// 获取XML中的根元素
+		Element root = dou.getDocumentElement();
+		// 获取第二个联系人的元素linkman,即是所有linkman集合，所以后面加上item（1）标识为第一个Node
+		Element E1 = (Element) dou.getElementsByTagName("linkman").item(1);
+		// 获取name元素的第一个属性，所以为inem(0)
+		Element nameE1 = (Element) E1.getElementsByTagName("name").item(0);
+		// 打印输出第二个元素的内容
+		System.out.println(nameE1.getTextContent());
+	}
+
+//获取第一个linkman元素，并把其邮箱修改
+	@Test
+	public void test2() throws Exception {
+		String pathString=this.getClass().getClassLoader().getResource("Students.xml").getPath();
+		System.out.println(pathString);
+		File f = new File("C:\\Users\\汪哒哒\\Documents\\JavaProject\\JavaReinforce\\ReinForce\\resources\\Students.xml");
+		// 获取Document对象
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder d = factory.newDocumentBuilder();
+		Document dou = d.parse(pathString);
+		// 获取XML中的根元素
+		Element root = dou.getDocumentElement();
+		// 获取第二个联系人的元素linkman,即是所有linkman集合，所以后面加上item（1）标识为第一个Node
+		Element E1 = (Element) dou.getElementsByTagName("linkman").item(1);
+		// 获取name元素的第一个属性，所以为inem(0)
+		Element nameE1 = (Element) E1.getElementsByTagName("name").item(0);
+		// 打印输出第二个元素的内容
+		System.out.println(nameE1.getTextContent());
+	}
+
+}

@@ -1,0 +1,23 @@
+package Day02;
+
+import java.io.IOException;
+import java.io.OutputStream;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+//演示response接口中的方法
+@WebServlet("/Response")
+public class ResponseMethod extends HttpServlet {
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		OutputStream out = resp.getOutputStream();
+		out.write("Spring Boot".getBytes());
+		out.write("凤姐".getBytes());
+	}
+
+}

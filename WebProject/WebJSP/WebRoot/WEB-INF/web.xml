@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0" metadata-complete="false">
+	<!-- 全局初始化参数 -->
+	<context-param>
+		<param-name>encoding</param-name>
+		<param-value>UTF-8</param-value>
+	</context-param>
+	<!-- <servlet> <servlet-name>Mapping</servlet-name> <servlet-class>Day01.Mapping</servlet-class> 
+		<load-on-startup>3</load-on-startup> </servlet> <servlet-mapping> <servlet-name>Mapping</servlet-name> 
+		<url-pattern>/Mapping</url-pattern> <url-pattern>/M1</url-pattern> </servlet-mapping> -->
+</web-app>

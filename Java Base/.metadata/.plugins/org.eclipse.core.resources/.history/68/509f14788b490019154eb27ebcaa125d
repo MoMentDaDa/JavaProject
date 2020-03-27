@@ -1,0 +1,19 @@
+package Java8;
+
+import java.awt.List;
+import java.util.Arrays;
+
+public class Lamdba1 {
+
+	public static void main(String[] args) {
+		System.out.println("Hello world");
+		User u1=new User("wang",12);
+		User u2=new User("li",13);
+		User[] u=new User[] {u1,u2};
+		Arrays.sort(u,new Compartor<User>)
+		
+		
+
+	}
+
+}

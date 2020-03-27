@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contacts>
+	<linkman id='1'>
+		<name>wilii</name>
+		<email>16341281@qq.com</email>
+		<address>成都</address>
+		<group>叩丁狼教育</group>
+	</linkman>
+	<linkman>
+		id='2'>
+		<name>stef</name>
+		<email>12854273881@qq.com</email>
+		<address>重庆</address>
+		<group>叩丁狼教育</group>
+	</linkman>
+</contacts>

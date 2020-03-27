@@ -1,0 +1,37 @@
+package MyServlet;
+
+import java.io.IOException;
+import java.util.Enumeration;
+
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class MyHttpServlet extends MyGeneralServlet {
+	public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
+		// ����ServletRequest��ServletResponse��ֻ�ܴ���һ������󣬶���https��Ҫ���ⶨ�壬��ΪhttpsΪ����������
+		HttpServletRequest hreq = (HttpServletRequest) req;
+		HttpServletResponse hres = (HttpServletResponse) res;
+		service(hreq, hres);// ����http���󷽷���ʵ�ֲ�ͬ�ķַ�����
+	}
+
+//ר�Ŵ���HTTP����
+	public void service(HttpServletRequest hreq, HttpServletResponse hres) {
+		String method = hreq.getMethod();
+		if ("GET".equals(method)) {
+			doGet(hreq, hres);
+		} else {
+			doPose(hreq, hres);
+		}
+	}
+
+//ר�����ڴ���POST����
+	private void doPose(HttpServletRequest hreq, HttpServletResponse hres) {
+	}
+
+//ר�����ڴ���GET����
+	private void doGet(HttpServletRequest hreq, HttpServletResponse hres) {
+	}
+}

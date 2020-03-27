@@ -1,0 +1,14 @@
+package JDBC_Web;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class IEmployeeServiceTest {
+
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+}

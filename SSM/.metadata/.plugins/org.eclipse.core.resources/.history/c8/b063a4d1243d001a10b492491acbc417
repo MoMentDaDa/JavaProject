@@ -1,0 +1,27 @@
+package ByXML;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import cn.wolfcode.ssm.domain.User;
+import cn.wolfcode.ssm.service.IUserService;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("classpath:applicationContext.xml")
+public class test {
+	@Autowired
+	private IUserService userService;
+
+	@Test
+	public void testListAll() throws Exception {
+		userService.listAll().forEach(System.out::println);
+	}
+
+	@Test
+	public void testSave() throws Exception {
+		userService.save(new User().setName("will").setAge(17));
+	}
+}

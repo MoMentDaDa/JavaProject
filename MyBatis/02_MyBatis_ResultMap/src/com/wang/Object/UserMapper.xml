@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.wang.Object.UserMapper">
+	<!-- 
+		resultMap  是解决结果集中列名和对象类的属性名不同的问题，称为结果集对象映射，或者可以通过取别名的方法解决。
+		ID属性： 当前Mapper文件中的resultMap的唯一名称
+		TYPE属性：把结果集中每一行数据封装成什么类型的对象 
+		
+		子元素： 
+			id元素：功能和result一模一样，如果是主键，建议使用ID元素，提升性能
+			coloumn元素：即结果集中的列名对应对象中的那一属性
+		
+		resultMap和resultType只能用一个
+	-->
+
+	<resultMap type="Mouse" id="MouseResultMap">
+		<id column="id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="price" property="prices"/>
+		<result column="engine" property="enginner"/>
+	</resultMap>
+
+	<select id="get" resultMap="MouseResultMap">
+		SELECT id,name,price,engine FROM mouse WHERE id=#{id}
+	</select>
+
+	<select id="listAll" resultMap="MouseResultMap">
+		SELECT id,name,price,engine FROM mouse
+	</select>
+
+
+	<!-- 查询总数操作 -->
+	<select id="getCount" resultType="int">
+		select count(id) FROM mouse
+	</select>
+
+	<!-- 查询部分列 -->
+	<select id="getMap" resultType="Map">
+		select name,price from mouse
+	</select>
+
+
+</mapper>

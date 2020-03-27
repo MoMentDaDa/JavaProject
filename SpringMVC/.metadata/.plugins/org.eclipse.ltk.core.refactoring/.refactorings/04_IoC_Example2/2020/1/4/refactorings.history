@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete element from project &apos;04_IoC_Example2&apos;&#x0D;&#x0A;- Original project: &apos;04_IoC_Example2&apos;&#x0D;&#x0A;- Original element: &apos;04_IoC_Example2/src/Register&apos;&#x0D;&#x0A;- Delete subpackages" description="Delete element" element1="/src&lt;Register.Service.Impl" element2="/src&lt;Register.Service" element3="/src&lt;Register.Domain" element4="/src&lt;Register.Dao.Impl" element5="/src&lt;Register.Dao" element6="/src&lt;Register.Action" element7="/src&lt;Register" elements="7" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1579400512351" subPackages="true" version="1.0"/>
+</session>

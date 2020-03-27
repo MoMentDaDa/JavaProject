@@ -1,0 +1,5 @@
+package SsmbyXml.Service;
+
+public interface userServiceDao {
+
+}

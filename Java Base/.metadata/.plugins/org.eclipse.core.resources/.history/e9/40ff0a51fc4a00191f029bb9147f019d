@@ -1,0 +1,5 @@
+package Java8;
+@FunctionalInterface
+public interface Worker {
+	void dowork();
+}

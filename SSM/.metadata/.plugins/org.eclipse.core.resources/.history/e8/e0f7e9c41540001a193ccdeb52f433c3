@@ -1,0 +1,7 @@
+package ByAnno.WebController;
+
+@Controller
+@RequestMapping("/user")
+public class userController {
+
+}

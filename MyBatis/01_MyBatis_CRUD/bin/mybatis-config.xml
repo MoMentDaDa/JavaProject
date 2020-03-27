@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd"><!-- 如果没有联网，需手动引入约束文件 -->
+<configuration>
+<!-- 日志技术 -->
+
+	
+	<!-- 1:配置数据库的环境,default中的字段为选择的开发环境,通过ID寻找test开发环境 -->
+	<environments default="development">
+		<!-- 开发环境:在以后事务管理器和连接池都是交给Spring框架来管理的 -->
+		<environment id="development">
+			<!-- ①:事务管理器 -->
+			<transactionManager type="JDBC" />
+			<!-- ②:连接池 -->
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url"
+					value="jdbc:mysql://localhost:3306/jdbc" />
+				<property name="username" value="will" />
+				<property name="password" value="will123" />
+			</dataSource>
+		</environment>
+		<environment id="test">
+			<transactionManager type="JDBC">
+				<property name="..." value="..." />
+			</transactionManager>
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<!-- 2:关联映射文件 -->
+	<mappers>
+		<mapper resource="com/wang/Object/UserMapper.xml" />
+	</mappers>
+
+</configuration>

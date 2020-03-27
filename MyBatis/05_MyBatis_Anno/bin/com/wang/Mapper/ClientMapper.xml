@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 不同的mapper文件的namespace是不一样的. 如果使用Mapper接口应使用其对应的dao全限定名称 -->
+<mapper namespace="com.wang.Mapper.ClientMapper">
+
+	<!-- <resultMap type="Client" id="ClientResultMap">
+		<id column="id" property="id" />
+		<result column="username" property="name" />
+		<result column="password" property="password" />
+	</resultMap>
+ -->
+
+	<select id="listAll2" resultMap="ClientResultMap">
+		SELECT id,username,password FROM client
+	</select>
+
+	<insert id="save1" parameterType="Client" useGeneratedKeys="true" keyProperty="id">
+		insert into client (username,password) values (#{name},#{password})
+	</insert>
+
+</mapper>

@@ -1,0 +1,23 @@
+package Generic_JavaBook;
+
+public class MethodTest {
+//泛型方法 printArray()
+	public static <E> void printArray(E[] array) {
+		for(E element:array) {
+			System.out.println(element);
+		}
+	}
+	
+	//泛型方法max()
+	public static <T extends Comparable<T>> T max(T x,T y) {
+		return x.compareTo(y)>0?x:y;
+	}
+	public static void main(String[] args) {
+		Integer[] intArray = {1,2,3,4,5};
+		printArray(intArray );
+		System.out.println();
+		System.out.println(max(12,24));
+
+	}
+
+}

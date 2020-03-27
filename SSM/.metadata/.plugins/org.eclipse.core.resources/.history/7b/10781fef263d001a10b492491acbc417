@@ -1,0 +1,11 @@
+package ByXML;
+
+import org.junit4.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import ByXML.Domain.User;
+import ByXML.Mapper.userMapperDao;
+
+public class test {
+	
+}

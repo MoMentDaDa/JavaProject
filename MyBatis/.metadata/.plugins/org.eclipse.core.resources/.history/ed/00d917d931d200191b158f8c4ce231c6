@@ -1,0 +1,9 @@
+package com.wang.Impl;
+
+import com.github.pagehelper.PageInfo;
+import com.wang.Domain.PageResult;
+import com.wang.Params.QueryParams;
+
+public interface IEmployee {
+	PageInfo<T> limtQuery(QueryParams qo);
+}

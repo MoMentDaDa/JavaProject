@@ -1,0 +1,12 @@
+package com.wang.Params;
+
+import lombok.Data;
+
+//封装高级查询的参数
+@Data
+public class AdvanceParams extends QueryParams {
+	private String nameWord;
+	public String getKeyword() {
+		return emptyNull(nameWord);
+	}
+}

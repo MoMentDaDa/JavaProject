@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<contacts> 
+  <linkman id="1"> 
+    <name>will</name>  
+    <email>iwill@com.cn</email>  
+    <address>成都</address>  
+    <group>叩丁浪教育</group> 
+  </linkman>  
+  <linkman id="2"> 
+    <name>luck</name>  
+    <email>luck@com.cn</email>  
+    <address>四川</address>  
+    <group>叩丁浪教育2</group> 
+  </linkman>  
+  <linkman id="4">
+    <name>西门</name>
+    <email>ximen@qq</email>
+    <address>万梅血装</address>
+    <group>xiaogag</group>
+  </linkman>
+</contacts>

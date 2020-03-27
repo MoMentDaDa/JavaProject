@@ -1,0 +1,22 @@
+package ByXML;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class test {
+
+	@Autowired
+	private userMapperDao userService;
+
+	@Test
+	public void testListAll() throws Exception {
+		userService.selectAll().forEach(System.out::println);
+	}
+
+	@Test
+	public void testSave() throws Exception {
+		userService.insert(new User().setName("will").setAge(17));
+	}
+
+}

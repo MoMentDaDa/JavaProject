@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;com.springsource.org.aspectj.weaver-1.6.8.RELEASE.jar&apos; to &apos;lib&apos;&#x0D;&#x0A;- Original project: &apos;Spring5-aop-xml&apos;&#x0D;&#x0A;- Destination element: &apos;lib&apos;&#x0D;&#x0A;- Original element: &apos;com.springsource.org.aspectj.weaver-1.6.8.RELEASE.jar&apos;" description="Copy file" element1="lib/com.springsource.org.aspectj.weaver-1.6.8.RELEASE.jar" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1571067072304" target="/07_AOP/lib" units="0" version="1.0"/>
+</session>

@@ -1,0 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>请求转发发模式</title>
+</head>
+<body>
+你好学妹，你好漂亮，${msg }
+</body>
+</html>

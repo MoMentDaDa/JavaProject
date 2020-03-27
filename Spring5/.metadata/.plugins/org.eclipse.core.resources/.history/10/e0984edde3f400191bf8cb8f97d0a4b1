@@ -1,0 +1,17 @@
+package TransactionByXML.Dao;
+
+/**
+ * @author wang
+ *
+ */
+public interface AccountDao {
+
+	
+	/**
+	 * @param outId
+	 * @param money
+	 */
+	void transOut(Long outId, int money);
+
+	void transIn(Long inId, int money);
+}

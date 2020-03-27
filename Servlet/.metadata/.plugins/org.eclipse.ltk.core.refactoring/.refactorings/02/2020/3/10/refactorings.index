@@ -1,0 +1,23 @@
+1583061965673	Rename type 'Servlet1'
+1583062273447	Convert local variable 'r' to field
+1583062344770	Convert local variable 'out' to field
+1583062565186	Delete element
+1583062932545	Delete element
+1583062950197	Move folder
+1583063158686	Rename resource 'login_success.html'
+1583069685395	Rename resource 'welcome.html'
+1583069729703	Rename resource 'login.html'
+1583117279839	Rename resource 'welcome.html'
+1583117285297	Rename resource 'huan.html'
+1583137118531	Rename resource 'Resign.html'
+1583137886521	Rename resource 'Register.html'
+1583139279361	Rename package 'RequestMethod'
+1583145819602	Rename type 'CommonMethods'
+1583148141359	Rename resource '论文各PDF对比.png'
+1583148672034	Copy compilation unit
+1583148693563	Rename type 'Response'
+1583148703479	Rename type 'Response2'
+1583150721359	Copy compilation unit
+1583198030371	Copy package
+1583198035816	Delete element
+1583285132660	Delete element

@@ -1,0 +1,65 @@
+create table customer(
+		uid int primary key auto_increment,
+  	username varchar(31),
+  	password varchar(31),
+  	phone  varchar(11)
+);
+insert into customer values(1,'zhangsan','123','13811118888');
+insert into customer values(2,'wangdada','456','13811114528');
+
+create table category(
+		cid int primary key auto_increment,
+  	cname varchar(15),
+  	cdesc varchar(100)
+);
+insert into category values(null,'手机数码','电子产品,黑马生产');
+insert into category values(null,'鞋靴箱包','江南皮鞋厂倾情打造');
+insert into category values(null,'香烟酒水','黄鹤楼,茅台,二锅头');
+insert into category values(null,'酸奶饼干','娃哈哈,蒙牛酸酸乳');
+insert into category values(null,'馋嘴零食','瓜子花生,八宝粥,辣条');
+
+
+create table products(
+		pid int primary key auto_increment,
+  	pname varchar(10),
+  	price double,
+  	cno int,
+  	foreign key(cno) references category(cid)
+);
+insert into products values(null,'小米mix4',998,1);
+insert into products values(null,'锤子',2888,1);
+insert into products values(null,'阿迪王',99,2);
+insert into products values(null,'老村长',88,3);
+insert into products values(null,'劲酒',35,3);
+insert into products values(null,'小熊饼干',1,4);
+insert into products values(null,'卫龙辣条',1,5);
+insert into products values(null,'旺旺大饼',1,5);
+
+
+ create table orders(
+			oid int primary key auto_increment,
+    	sum int not null,
+      otime timestamp,
+    	address varchar(100),
+    	uno int,
+    	foreign key(uno) references customer(uid)
+  );
+insert into orders values(1,200,null,'黑马前台旁边小黑屋',1);
+insert into orders values(2,250,null,'黑马后台旁边1702',1);
+
+
+create table orderitem(
+		ono int,
+  	pno int,
+  	foreign key(ono) references orders(oid),
+  	foreign key(pno) references products(pid),
+  	ocount int,
+  	subsum double
+);
+--给1号订单添加商品 200块钱的商品
+insert into orderitem values(1,7,100,100);
+insert into orderitem values(1,8,101,100);
+
+--给2号订单添加商品 250块钱的商品 ()
+insert into orderitem values(2,5,1,35);
+insert into orderitem values(2,3,3,99);

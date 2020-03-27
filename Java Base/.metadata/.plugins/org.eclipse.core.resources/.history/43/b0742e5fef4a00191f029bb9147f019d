@@ -1,0 +1,16 @@
+package Java8;
+
+public class Lambda2 {
+
+	public static void main(String[] args) {
+		new Lambda2().dowork2();
+
+	}
+
+	private void dowork2() {
+		System.out.println("先执行lambda方法");
+		this.dowork2
+		
+	}
+
+}

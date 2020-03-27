@@ -1,0 +1,8 @@
+package TransactionByXML.Service.Impl;
+
+import TransactionByXML.Service.AccountServiceDao;
+
+public class AccountImpl implements AccountServiceDao {
+
+
+}

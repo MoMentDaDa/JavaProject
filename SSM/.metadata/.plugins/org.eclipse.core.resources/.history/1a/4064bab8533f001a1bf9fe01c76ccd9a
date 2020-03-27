@@ -1,0 +1,5 @@
+package ByXML.Service;
+
+public interface userServiceDao {
+
+}

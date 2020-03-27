@@ -1,0 +1,17 @@
+package Java8;
+public class Lambda2 {
+	public static void main(String[] args) {
+		Lambda2 l=new Lambda2();
+		Worker w=new Worker() {
+			
+			@Override
+			public void sayMessage(String message) {
+				System.out.println("Hello");
+				
+			}
+		};
+		
+	}
+	
+	
+}

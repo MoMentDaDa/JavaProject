@@ -1,0 +1,50 @@
+package Method;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.URLEncoder;
+
+import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServlet;
+
+@SuppressWarnings("all")
+public class Response extends HttpServlet {
+	@Override
+	public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
+		// 1、获取流，向浏览器响应正文
+		// 获取到printWriter对象,不支持输出二进制，只支持字符，缓冲区的默认大小为8KB
+		// Tomcat默认的编码是ISO 8859-1的编码，不支持字符，所以我设置成UTF-8，但是这个只是在服务端，所以客户端还得设置
+		// res.setCharacterEncoding("utf-8");
+		// 设置浏览器用UTF-8编码显示数据，它不仅设置浏览器用UTF-8显示数据，内部还把中文转码的码表设置成UTF-8了，最推荐，完全不需要上一步
+		// res.setContentType("text/html;charset=UTF-8");
+		// res.getWriter().write("看完博客点赞！");
+
+		// 获取到OutputStream流,向浏览器输出数据,Tomcat使用IOS 8859-1编码，所以不支持该方式输出字符串
+		// res.getOutputStream().print("aaaa");
+		// 使用write方法时，字符串在转成byte[]数组的时候默认查的是gb2312编码，但是浏览器是GBK的编码，所以应该设置，但不是长久之计
+		// res.getOutputStream().write("中国！".getBytes("GBK"));
+
+		// 2、文件下载
+		String path = this.getServletContext().getRealPath("/resouces/论文.png");// 获取到资源的路径
+		FileInputStream fileInputStream = new FileInputStream(path);// 读取资源
+		String fileName = path.substring(path.lastIndexOf("\\") + 1);// 获取到文件名,路径在电脑上保存是\\形式的。
+		// 设置消息头，告诉浏览器，我要下载1.png这个图片
+		res.setHeader("Content-Disposition", "attachment; filename=" + URLEncoder.encode(fileName, "UTF-8"));
+		// 把读取到的资源写给浏览器
+		int len = 0;
+		byte[] bytes = new byte[1024];
+		ServletOutputStream servletOutputStream = res.getOutputStream();
+
+		while ((len = fileInputStream.read(bytes)) > 0) {
+			servletOutputStream.write(bytes, 0, len);
+		}
+
+		// 关闭资源
+		servletOutputStream.close();
+		fileInputStream.close();
+
+	}
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename Java project &apos;6_MyBatis_DynamicSQL&apos; to &apos;7_MyBatis_DynamicSQL&apos;&#x0D;&#x0A;- Original element: &apos;6_MyBatis_DynamicSQL&apos;&#x0D;&#x0A;- Renamed element: &apos;6_MyBatis_DynamicSQL&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename Java project &apos;6_MyBatis_DynamicSQL&apos;" flags="7" id="org.eclipse.jdt.ui.rename.java.project" input="=6_MyBatis_DynamicSQL" name="7_MyBatis_DynamicSQL" references="true" stamp="1565094072963" version="1.0"/>
+</session>

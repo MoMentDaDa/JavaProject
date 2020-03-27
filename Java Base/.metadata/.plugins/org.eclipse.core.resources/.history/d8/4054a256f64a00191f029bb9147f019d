@@ -1,0 +1,19 @@
+package Java8;
+
+import Java8.*;
+
+public class lambda2 {
+
+	public static void main(String[] args) {
+		lambda2 a = new lambda2();
+
+		a.test();
+
+	}
+
+	public void test() {
+	FunctionalInterface b=(() -> System.out.println("Ö´ÐÐ·½·¨"));
+
+	}
+
+}

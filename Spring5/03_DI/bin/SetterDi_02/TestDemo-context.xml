@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- Setter 方法注入，类应该提供 setter 方法必须是官方的，不可用小辣椒 。方法注入会自动进行类型转换（属性编辑器） -->
+	<!-- 基本类型 -->
+	<bean id="employee" class="SetterDi.Constant.Employee">
+		<property name="name">
+			<value>will</value>
+		</property>
+		<property name="age" value="17" />
+		<property name="salary" value="800" />
+		<property name="url" value="http://www.wang.cn" />
+	</bean>
+
+	<!-- 对象类型,一般不需要属性配置使用单元素标签，需要双元素 。name 为对象属性名，不可写错，ref 对应相应的对象 -->
+	<bean id="cat1" class="SetterDi.Object.Cat1" />
+	<bean id="person1" class="SetterDi.Object.Person1">
+		<property name="c1" ref="cat1"></property>
+		<!-- <property name="c1"> <ref bean="cat1" /> </property> -->
+	</bean>
+	<!-- <bean id="person1" class="SetterDi.Object.Person1" p:name="c1" p:age=17 /> 使用 p 标签简写-->
+
+
+
+	<!-- 注入集合类型 -->
+	<bean id="collectionBean" class="SetterDi.Collection.CollectionBean">
+		<property name="set">
+			<set>
+				<value>set1</value>
+				<value>set2</value>
+			</set>
+		</property>
+		<property name="list">
+			<list>
+				<value>list1</value>
+				<value>list2</value>
+			</list>
+		</property>
+		<property name="array">
+			<list>
+				<value>array1</value>
+				<value>array2</value>
+			</list>
+		</property>
+		<property name="map">
+			<map>
+				<entry key="key1" value="value1" />
+				<entry key="key2" value="value2" />
+			</map>
+		</property>
+		<property name="prop">
+			<props>
+				<prop key="pKey1">pVal1</prop>
+				<prop key="pKey2">pVal2</prop>
+			</props>
+		</property>
+	</bean>
+
+</beans>

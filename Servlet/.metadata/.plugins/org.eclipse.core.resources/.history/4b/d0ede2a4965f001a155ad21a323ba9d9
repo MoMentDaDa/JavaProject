@@ -1,0 +1,46 @@
+package SessionApply;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import CookieApply.Book;
+
+@WebServlet("/session/shop")
+@SuppressWarnings("all")
+public class bookShop extends HttpServlet {
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		resp.setContentType("text/html;charset=UTF-8");
+		PrintWriter w = resp.getWriter();
+		HttpSession httpSession = req.getSession();
+		// 由于用户可能想买多本书的，所以我们用一个容器装着书籍
+		List list = (List) httpSession.getAttribute("bookList");
+		System.out.println(list==null);
+		// 拿到数据库所有的书
+		LinkedHashMap<String, Book> DB = Book.getAll();
+		Set<Map.Entry<String, Book>> entry = DB.entrySet();
+		// 显示所有的书到网页上
+		for (Map.Entry<String, Book> stringBookEntry : entry) {
+			Book book = stringBookEntry.getValue();
+			w.write(book.getId() + book.getName());
+			w.write("<a href=/04/session/shopstate?id=" + book.getId() + ">" + "点击加入购物车" + "</a>");
+			w.write("<br/>");
+		}
+		w.write("<br/>");
+		w.write("<a href=/04/session/bookcart>" + "查看购物车 " + "</a>");
+		w.write("<br/>");
+	}
+}

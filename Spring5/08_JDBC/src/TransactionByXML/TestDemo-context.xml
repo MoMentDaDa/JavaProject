@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+
+	<!-- 从classpath的根路径去加载db.properties文件 -->
+	<context:property-placeholder location="classpath:db.properties" system-properties-mode="NEVER" />
+
+	<!-- 配置一个druid的连接池 -->
+	<bean id="DS" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<!-- <property name="initialSize" value="${jdbc.initialSize}" /> -->
+	</bean>
+
+	<!-- 配置DAO,name 的值应该和实现类中的名相同，等价于注入了一个成员 -->
+	<bean id="accountDAO" class="TransactionByXML.Dao.Impl.AccountImpl">
+		<property name="dataSources" ref="DS" />
+	</bean>
+
+	<!-- 配置Service -->
+	<bean id="accountService" class="TransactionByXML.Service.Impl.AccountServicesImpl">
+		<property name="dao" ref="accountDAO" />
+	</bean>
+
+	<!-- 1，配置JDBC事务管理器 -->
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="DS" />
+	</bean>
+
+	<!-- 2，配置管理事务的增强 -->
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes> <!-- 设置需要事务的方法 -->
+			<tx:method name="trans" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- 3，配置切面 -->
+	<aop:config>
+		<aop:pointcut id="txPoint" expression="execution(* TransactionByXML.Service.*.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPoint" />
+	</aop:config>
+
+</beans>

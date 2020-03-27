@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wang.Mapper.EmployeeMapper">
+	<!-- 处理结果集 -->
+	<resultMap id="BaseResultMap" type="com.wang.Domain.Employee">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<!--
+			额外SQL 配置方式
+			association：配置单一元素的关联关系.不能为集合
+			select属性：发送额外的SQL
+			column属性：指定列的值传递给额外的SQL
+		-->
+		<!-- 使用额外SQL 配置方式，处理关联对象 -->
+		<association property="dept" javaType="com.wang.Domain.Department" 
+			select="com.wang.Mapper.DepartmentMapper.get" column="deptID" />
+	</resultMap>
+
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id">
+		insert into employee (name,deptID) values (#{name},#{dept.id})
+	</insert>
+	<select id="get" resultMap="BaseResultMap">
+		select id,name,deptID from employee where id=#{id}
+	</select>
+</mapper>

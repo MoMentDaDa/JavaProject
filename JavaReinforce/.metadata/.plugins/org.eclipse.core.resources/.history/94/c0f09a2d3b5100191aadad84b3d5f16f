@@ -1,0 +1,28 @@
+package xmlTest;
+
+import java.io.File;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.junit.Test;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
+public class DOM_Test {
+//获取Document对象，并打印第二个内容
+	@Test
+	public void test1() throws Exception {
+		File f = new File("C:\\Users\\汪哒哒\\Documents\\JavaProject\\JavaReinforce\\ReinForce\\resources\\Students.xml");
+		// 获取Document对象
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder d = factory.newDocumentBuilder();
+		Document dou = d.parse(f);
+		// 获取XML中的根元素
+		Element root = dou.getDocumentElement();
+		// 获取第二个联系人的元素linkman
+		Element E1 = (Element) dou.getElementsByTagName("linkman").item(1);
+		Element nameE1=(Element) E1.getElementsByTagName("name");
+		// 打印输出第二个元素的内容
+		System.out.println(nameE1.getTextContent());
+	}
+
+}

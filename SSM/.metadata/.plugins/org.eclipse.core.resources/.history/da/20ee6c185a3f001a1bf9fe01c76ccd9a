@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+	<!-- DI注解解析器 -->
+	<context:annotation-config />
+
+	<!-- IoC注解解析器 -->
+	<context:component-scan base-package="ByAnno.Service" />
+
+
+
+	<!-- 下面将 myBatis-config 的配置信息交给 spring 管理，这样就不需要 myBatis-config 配置文件,即mybatis 和spring 整合 -->
+
+	<!-- 加载数据库配置信息 -->
+	<context:property-placeholder location="classpath:db.properties" system-properties-mode="NEVER" />
+
+	<!-- 连接池对象 -->
+	<bean id="myDataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<!-- 配置SessionFactory,这些配置需要springboot 中才可以用注解取代 -->
+	<bean id="mySessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 1:连接池 -->
+		<property name="dataSource" ref="myDataSource" />
+		<!--
+			读取MyBatis总配置文件,如果要读取，那么就必须有myBatis-config 文件，配置文件包含延迟加载、别名等配置
+			但是可以使用设置 MyBatis 配置信息交给spring 管理，这样就不需要关联其配置文件
+			<property name="configLocation" value="classpath:myBatis-config.xml" />
+		-->
+
+		<property name="configurationProperties">
+			<value>
+				lazyLoadingEnabled=true
+				aggressiveLazyLoading=false
+				lazyLoadTriggerMethods=clone
+			</value>
+		</property>
+		<!--为哪些包下的类起别名,别名默认为自己的小写名称 -->
+		<property name="typeAliasesPackage" value="ByAnno.Mapper" />
+
+		<!--加载 Mapper 映射配置文件 -->
+		<property name="mapperLocations" value="classpath:Mappers/*MapperDao.xml" />
+	</bean>
+</beans>

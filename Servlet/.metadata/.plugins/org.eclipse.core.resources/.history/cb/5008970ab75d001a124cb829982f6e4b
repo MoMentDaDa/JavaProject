@@ -1,0 +1,14 @@
+package Method;
+
+import com.sun.org.apache.bcel.internal.generic.RETURN;
+
+import sun.misc.BASE64Encoder;
+
+public class DownLoadUtil {
+	private String base64ToUtf8() {
+		BASE64Encoder base64Encoder=new BASE64Encoder();
+
+	}
+
+
+}

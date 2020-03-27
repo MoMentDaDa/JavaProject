@@ -1,0 +1,57 @@
+package Method;
+
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.net.URLEncoder;
+import java.util.Date;
+import java.util.zip.GZIPOutputStream;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@SuppressWarnings("all")
+public class Response extends HttpServlet {
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
+		/*
+		 String path = this.getServletContext().getRealPath("/resouces/论文.png");
+		String filename = path.substring(path.lastIndexOf("\\") + 1);
+		System.out.println(filename);
+		// 如果下载的是中文文件名，则会乱码，需要使用url编码
+		response.setHeader("Content-Disposition", "attachment; filename=" + URLEncoder.encode(filename, "UTF-8"));
+		InputStream in = new FileInputStream(path);
+		OutputStream out = response.getOutputStream();
+		int len = 0;
+		byte buffer[] = new byte[1024];
+		while ((len = in.read(buffer)) != -1) {
+			out.write(buffer, 0, len);
+		}
+		
+		in.close();
+		out.close();
+		*/
+
+		// 实现自动刷新，每5秒自动刷新网页一次
+		response.setHeader("Refresh", "5");
+		response.getWriter().write("time is :" + System.currentTimeMillis());
+response.getOutputStream().print("<br>");
+		// 设置缓存，由于浏览器本身具有缓存机制，但像股票类型的网页是不能取缓存的数据的，数据都是要不断更新的。下面我就禁止缓存的功能
+		// 浏览器有三消息头设置缓存，为了兼容性！将三个消息头都设置了
+		response.setDateHeader("Expires", -1);
+		response.setHeader("Cache-Control", "no-cache");
+		response.setHeader("Pragma", "no-cache");
+		// 这里为了看效果
+		PrintWriter printWriter = response.getWriter();
+		printWriter.print("你好啊" + new Date().toString());
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
+
+}

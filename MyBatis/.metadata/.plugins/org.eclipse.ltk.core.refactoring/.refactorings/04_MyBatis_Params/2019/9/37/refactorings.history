@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 6 elements from project &apos;04_MyBatis_Params&apos;&#x0D;&#x0A;- Original project: &apos;04_MyBatis_Params&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     druid-1.1.9.jar&#x0D;&#x0A;     el-api.jar&#x0D;&#x0A;     jstl.jar&#x0D;&#x0A;     servlet-api.jar&#x0D;&#x0A;     slf4j-log4j12-1.5.6.jar&#x0D;&#x0A;     standard-1.1.2.jar" description="Delete elements" element1="lib/servlet-api.jar" element2="lib/druid-1.1.9.jar" element3="lib/standard-1.1.2.jar" element4="lib/jstl.jar" element5="lib/el-api.jar" element6="lib/slf4j-log4j12-1.5.6.jar" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="6" stamp="1567949595789" subPackages="false" version="1.0"/>
+</session>

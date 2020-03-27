@@ -1,0 +1,36 @@
+package Day02;
+
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.io.Reader;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+//演示response接口中的方法
+@WebServlet("/Response")
+public class ResponseMethod extends HttpServlet {
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//获取字节输出流
+		resp.setCharacterEncoding("utf-8");
+		OutputStream out = resp.getOutputStream();
+		out.write("Spring Boot".getBytes());
+		out.write("凤姐".getBytes());
+
+//获取字符输出流
+		// 设置输出编码格式
+		// resp.setCharacterEncoding("UTF-8");
+		// 设置输出数据的MIME格式,让网页以HTML格式输出,遵循格式
+		// resp.setContentType("text/html");
+		/*
+		 * resp.setContentType("text/html;charset=utf-8"); PrintWriter r =
+		 * resp.getWriter(); r.println("师姐好美,"); r.println("师姐我要娶你");
+		 */
+	}
+
+}

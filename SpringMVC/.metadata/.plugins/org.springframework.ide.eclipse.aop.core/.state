@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="02_ControllerMethod"/>
+<aop-project name="01_Hello-MVC"/>
+<aop-project name="03_SprngMvc_JDBC"/>
+</aop-reference-model>

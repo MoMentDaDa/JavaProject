@@ -1,0 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    result:
+    	这个数据是通过被标注的方法设置共享的，${model }<br>
+    	${user}<br/>
+    	${myUser}<br/>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 不同的mapper文件的namespace是不一样的. 如果使用Mapper接口应使用其对应的dao全限定名称 -->
+<mapper namespace="ByXML.Mapper.userMapperDao">
+	<!-- 结果集映射处理,应给user 配置别名 -->
+	<resultMap id="baseResultMapeer" type="ByXML.Domain.User">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="age" property="age" />
+		<result column="born_date" property="bornDate" />
+		<result column="born_img" property="headImg" />
+	</resultMap>
+
+	<!-- 保存操作 -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO user(name,age,born_date,head_img) VALUES(#{name},#{age},#{bornDate},#{headImg})
+	</insert>
+
+	<!-- 更新操作 -->
+	<update id="updateById">
+		UPDATE user SET name = #{name},age = #{age},born_date=#{bornDate},head_img = #{headImg} WHERE id = #{id}
+	</update>
+
+	<!-- 删除操作 -->
+	<delete id="deleteById">
+		DELETE FROM user WHERE id = #{id}
+	</delete>
+
+	<!-- 查询单个操作 -->
+	<select id="selectById" resultMap="baseResultMapeer">
+		SELECT id,name,age,born_date,head_img FROM user WHERE id = #{id}
+	</select>
+
+	<!-- 查询多个操作 -->
+	<select id="selectAll" resultMap="baseResultMapeer">
+		SELECT id,name,age,born_date,head_img FROM user
+	</select>
+
+</mapper>

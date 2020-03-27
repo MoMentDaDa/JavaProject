@@ -1,0 +1,87 @@
+package Java8;
+
+import java.util.Arrays;
+import java.util.Comparator;
+
+public class Lamdba1 {
+
+	public static void main(String[] args) {
+		testOld();
+		testrun();
+		testrun2();
+		testrun3();
+		testrun4();
+		test();
+		test2();
+		test3();
+	}
+
+//传统写法
+	private static void testrun() {
+		new Thread(new Runnable() {
+			public void run() {
+				System.out.println("Hello world");
+			}
+		}).start();
+	}
+
+//使用Lamdba进行简化
+	private static void testrun2() {
+		new Thread(() -> System.out.println("Hello world")).start();
+	}
+
+	private static void testrun3() {
+		Runnable a = new Runnable() {
+			public void run() {
+				System.out.println("Hello world");
+			}
+		};
+		new Thread(a).start();
+		new Thread(a).start();
+		new Thread(a).start();
+	}
+
+//通过Lambda表达式实现赋值的引用
+	private static void testrun4() {
+		Runnable a = () -> System.out.println("Hello world");
+		new Thread(a).start();
+		new Thread(a).start();
+		new Thread(a).start();
+	}
+
+	private static void testOld() {
+		User[] u = new User[] { new User("wang", 17), new User("li", 13) };
+		Arrays.sort(u, new Comparator<User>() {
+			public int compare(User u1, User u2) {
+				return Integer.compare(u1.age, u2.age);
+			}
+		});
+	}
+
+//精简了接口和方法名称
+	private static void test() {
+		User[] u = new User[] { new User("wang", 17), new User("li", 13) };
+		Arrays.sort(u, (User u1, User u2) -> {
+			return Integer.compare(u1.age, u2.age);
+		});
+		System.out.println(Arrays.toString(u));
+		System.out.println("-----------");
+	}
+
+// 如果代码块只有一行，便可以删除花括号和return
+	private static void test2() {
+		User[] u = new User[] { new User("wang", 17), new User("li", 13) };
+		Arrays.sort(u, (User u1, User u2) -> Integer.compare(u1.age, u2.age));
+		System.out.println(Arrays.toString(u));
+		System.out.println("-----------");
+	}
+
+//由于精简的参数类型是可以推到出来的的，所以JVM一定可推导出来的
+	private static void test3() {
+		User[] u = new User[] { new User("wang", 17), new User("li", 13) };
+		Arrays.sort(u, (u1, u2) -> Integer.compare(u1.age, u2.age));
+		System.out.println(Arrays.toString(u));
+		System.out.println("-----------");
+	}
+
+}

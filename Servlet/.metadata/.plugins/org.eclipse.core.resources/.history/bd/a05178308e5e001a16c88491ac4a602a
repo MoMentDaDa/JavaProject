@@ -1,0 +1,48 @@
+package Cookie;
+
+import java.io.IOException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@SuppressWarnings("all")
+@WebServlet("/cookie/s2")
+public class Servlet2 extends HttpServlet {
+	@Override
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 设置response的编码
+		response.setContentType("text/html;charset=UTF-8");
+		Cookie cookie = new Cookie("name2", "java");
+		// 通过设置路径使得只有s1可以获得这个Cookie。路径应该跟上项目名，否则为为/cookie/s1，但是s1路径为/04/cookie/s1，路径不匹配，意味着域名不同，会导致s1获取不到
+		cookie.setPath("/04/cookie/s1");
+		cookie.setMaxAge(1000);
+		response.addCookie(cookie);
+		response.getWriter().write("该Cookie只有Servlet1获取得到" + "<br>");
+		Cookie[] cookies = request.getCookies();
+		if (cookies != null) {
+			for (Cookie c : cookies) {
+				String cookieName = c.getName();
+				String cookieValue = c.getValue();
+				response.getWriter().write(cookieName + ":" + cookieValue + "<br>");
+			}
+		}
+
+		// 演示域名使用.用www.wang.com域名发送了一个Cookie给浏览器
+		/*		Cookie cookie = new Cookie("name", "wang");
+				cookie.setMaxAge(1000);
+				response.addCookie(cookie);*/
+		// 演示一级域名相同可以互通cookie
+		Cookie cookie2 = new Cookie("name2", "wang2");
+		cookie2.setDomain(".wang.com");
+		cookie2.setMaxAge(1000);
+		response.addCookie(cookie2);
+		response.getWriter().write("使用www.wang.com域名添加了一个Cookie" + "<br>");
+
+	}
+}

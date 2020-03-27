@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wang.Mapper.EmployeeMapper">
+	<insert id="save" useGeneratedKeys="true" keyProperty="id">
+		insert into employee (name,deptID) values (#{name},#{dept_id})
+	</insert>
+	<select id="selectByDeptID" resultType="com.wang.Domain.Employee">
+		select id,name,deptID as dept_id from employee e where deptID=#{id}
+	</select>
+</mapper>

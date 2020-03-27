@@ -1,0 +1,23 @@
+package Java8;
+
+import java.awt.Button;
+import java.awt.Frame;
+import java.awt.event.ActionEvent;
+
+public class LambdaGrammarDemo {
+	public static void main(String[] args) {
+		test2();
+	}
+//无参数情况的Lambda
+	public static void test1() {
+		new Thread(() -> System.out.println("Hello world")).start();
+	}
+//一个参数的Lambda
+	public static void test2() {
+		Frame f=new Frame();
+		f.setSize(200,300);
+		Button b=new Button("Lambda");
+		b.addActionListener((ActionEvent event)->System.out.println("HelloLambda"));
+				
+	}
+}

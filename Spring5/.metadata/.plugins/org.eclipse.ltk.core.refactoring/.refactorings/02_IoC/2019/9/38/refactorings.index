@@ -1,0 +1,25 @@
+1568729745315	Delete element
+1568729766043	Delete element
+1568729783798	Delete element
+1568729869135	Rename type 'SpringTestUnit5'
+1568731137003	Rename resource 'SpringTestUnit5-context.xml'
+1568807912448	Rename package 'wang.SpringCreatBean'
+1568807961124	Rename package 'wang.SpringTest'
+1568807970813	Rename package 'IoC'
+1568808116186	Copy file
+1568808143247	Move elements
+1568809984245	Rename resource 'SomeBean.xml'
+1568810301900	Copy compilation unit
+1568810308822	Rename type 'cat1'
+1568811428214	Copy package
+1568811432194	Delete element
+1568811444414	Copy compilation unit
+1568811481084	Copy compilation unit
+1568811488094	Rename type 'cat2Factory'
+1568811493030	Rename type 'cat2'
+1568811573219	Rename type 'cat3Factory'
+1568812253032	Copy compilation units
+1568812259036	Rename type 'cat3'
+1568812283844	Rename type 'Factory'
+1568815134055	Rename resource 'Dog.xml'
+1568815749924	Copy elements

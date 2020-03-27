@@ -1,0 +1,24 @@
+package TransactionByXML;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+
+import Template.Dao.EmployeeDao;
+import Template.Domain.Employee;
+import TransactionByXML.Dao.AccountDao;
+import cn.wolfcode.service.IAccountService;
+
+@SpringJUnitConfig
+class TestDemo {
+	Autowired
+	private AccountDao service;
+
+	@Test
+	void testTrans() throws Exception {
+		service.trans(10086L, 10010L, 1000);
+	}
+}

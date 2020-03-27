@@ -1,0 +1,13 @@
+package ServletConfig;
+
+import javax.servlet.Servlet;
+
+/**
+ * @ClassName: InitParamServlet
+ * @Description: 通过实现servlet 接口获取一个servletConfig对象，然后获取配置信息
+ * @author: MoMent
+ * @date: 2020年3月1日 上午10:06:15
+ */
+public class InitParamServlet implements Servlet{
+
+}

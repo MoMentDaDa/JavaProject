@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd"><!-- 如果没有联网，需手动引入约束文件 -->
+<configuration>
+	<!-- 属性配置文件，可外部配置且可动态替换的，既可以在典型的 Java 属性文件中配置，亦可通过 properties 元素的子元素来传递。 -->
+<!-- 	<properties>
+		<property name="driver" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/jdbc" />
+		<property name="username" value="will" />
+		<property name="password" value="will123" />
+	</properties> 内部定义引用-->
+	<properties resource="db.properties">
+
+	</properties>
+	<typeAliases>
+		<!-- <typeAlias type="com.wang.Object.User" alias="User" /> -->
+		<!--给一个包取别名，MyBatis 会在包名下面搜索需要的 Java Bean，例如 domain.blog.Author 的别名为 author；若有注解，则别名为其注解值 
+			@Alias("author")。 -->
+		<package name="com.wang.Object" />
+	</typeAliases>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driver}" />
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="com/wang/Mapper/UserMapper.xml" />
+	</mappers>
+</configuration>

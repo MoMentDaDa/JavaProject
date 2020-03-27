@@ -1,0 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<table border="1" width=80% cellpadding="0" cellspaing="0">
+		<tr style="background-color: pink">
+			<td>ID</td>
+			<td>name</td>
+			<td>参考价格</td>
+			<td>重量</td>
+			<td>材质</td>
+			<td>引擎</td>
+			<td>操作</td>
+			<td>是否加入购物车</td>
+		</tr>
+
+		<c:forEach items="${mouses}" var="m">
+			<tr>
+				<td>${m.id }</td>
+				<td>${m.name }</td>
+				<td>${m.price }</td>
+				<td>${m.weight}</td>
+				<td>${m.material}</td>
+				<td>${m.engineering}</td>
+		
+				<td><a href="/mouse?cmd=delete&&id=${m.id }">删除</a> 
+				<a href="/mouse?cmd=edit&&id=${m.id }">编辑</a></td>
+			</tr>
+		</c:forEach>
+	</table>
+</body>
+</html>

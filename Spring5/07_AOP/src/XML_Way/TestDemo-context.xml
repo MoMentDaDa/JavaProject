@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+
+	<bean id="employeeDAO" class="XML_Way.Dao.Impl.EmployeeImpl" />
+
+
+	<bean id="employeeService" class="XML_Way.Service.Impl.EmployeeServiceImpl">
+		<property name="dao" ref="employeeDAO" />
+	</bean>
+
+	<bean id="transactionManager" class="XML_Way.tx.TransactionManager2" />
+
+	<!-- 配置AOP, proxy-target-class 属性为true,则为强制使用 CGLIB去做动态代理 -->
+	<aop:config>
+		<!--what:增强了什么 -->
+		<aop:aspect ref="transactionManager"><!-- 关联bean,即what -->
+			<!--where:哪些包下的哪些类中的哪些方法上增强 -->
+			<aop:pointcut id="txPoint" expression=" execution(* XML_Way.Service.*.*(..))" />
+
+			<!--when:在方法的前/后增强 -->
+			<!-- <aop:before method="begin" pointcut-ref="txPoint" />
+				<aop:after-returning method="commit" pointcut-ref="txPoint" />
+				<aop:after-throwing method="rollback" pointcut-ref="txPoint" throwing="ex"/>
+				<aop:after method="close" pointcut-ref="txPoint" /> -->
+
+			<!-- 环绕增强可以等价上面的所有增强 -->
+			<aop:around method="around" pointcut-ref="txPoint" />
+		</aop:aspect>
+	</aop:config>
+
+</beans>

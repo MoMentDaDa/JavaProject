@@ -1,0 +1,12 @@
+package TransactionByXML.Domain;
+
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Data
+public class Account {
+	private Long id;
+	private int balance;	
+}

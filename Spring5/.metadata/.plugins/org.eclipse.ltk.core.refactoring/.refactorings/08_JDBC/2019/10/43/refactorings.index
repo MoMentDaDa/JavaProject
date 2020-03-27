@@ -1,0 +1,10 @@
+1571579555309	Rename package 'Register'
+1571584537792	Delete element
+1571584745065	Delete element
+1571759117347	Rename type 'Employee'
+1571759196842	Rename type 'EmployeeDao'
+1571759560980	Rename type 'EmployeeImpl'
+1571759618844	Rename type 'EmployeeServiceDao'
+1571759629444	Rename type 'AccountServiceDao'
+1571759647701	Rename type 'EmployeeServiceImpl'
+1571759678300	Rename type 'AccountDao'

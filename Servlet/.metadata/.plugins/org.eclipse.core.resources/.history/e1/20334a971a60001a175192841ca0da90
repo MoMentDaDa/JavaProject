@@ -1,0 +1,9 @@
+package SessionApply.userLogin;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+@WebServlet("/session/login")
+@SuppressWarnings("all")
+public class loginServlet extends HttpServlet{
+
+}

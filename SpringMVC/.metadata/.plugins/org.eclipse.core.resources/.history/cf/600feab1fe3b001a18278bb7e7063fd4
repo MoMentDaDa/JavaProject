@@ -1,0 +1,33 @@
+package ByAnno.domain;
+
+import java.util.Date;
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import lombok.Data;
+
+//贴上注释和controller结合即可以实现输入校验，如果要做国际化可以结合ValidationMessages 配置文件实现
+@Data
+public class Employee {
+	private Long id;
+
+	@NotNull(message = "{employee.username.notnull}")
+	@Size(max = 10, min = 4, message = "{employee.username.size}")
+	private String username;
+
+	@NotNull(message = "密码不能为空")
+	private String password;
+
+	@NotNull(message = "年龄不能为空")
+	@Min(value = 18, message = "最小为18")
+	@Max(value = 52, message = "最大为52")
+	private Integer age;
+	@DateTimeFormat(pattern = "yyyy-MM-dd") // 配置时间日期格式，否则不能保存时间
+	private Date hiredate;
+
+}

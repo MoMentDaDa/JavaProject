@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wang.Mapper.DepartmentMapper">
+	<!-- Dao 中可以不写 -->
+	<select id="get" resultType="com.wang.Domain.Department">
+		SELECT id,name FROM department WHERE id = #{id}
+	</select>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id">
+		insert into department (name) values (#{name})
+	</insert>
+
+</mapper>

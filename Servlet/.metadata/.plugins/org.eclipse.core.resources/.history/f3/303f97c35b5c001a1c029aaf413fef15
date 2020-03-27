@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- 测试自己手写的servlet -->
+	<servlet>
+		<servlet-name>MyServletTest</servlet-name>
+		<servlet-class>MyServlet.MyServletTest</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MyServletTest</servlet-name>
+		<url-pattern>/myServletTest</url-pattern>
+	</servlet-mapping>
+
+	<!-- 配置登录请求数据处理的Servlet -->
+	<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>ContextLoging.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<!-- -->
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/login/loginServlet</url-pattern>
+	</servlet-mapping>
+
+	<!-- 配置处理次数跳转显示的servlet -->
+	<servlet>
+		<servlet-name>CountSrevlet</servlet-name>
+		<servlet-class>ContextLoging.CountSrevlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CountSrevlet</servlet-name>
+		<url-pattern>/login/countSrevlet</url-pattern>
+	</servlet-mapping>
+
+	<!-- 配置请求方法的servlet -->
+	<servlet>
+		<servlet-name>CommonMethods</servlet-name>
+		<servlet-class>RequestMethod.CommonMethods</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RequestMethod</servlet-name>
+		<url-pattern>/requestMethod</url-pattern>
+	</servlet-mapping>
+</web-app>

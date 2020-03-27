@@ -1,0 +1,21 @@
+1567414338761	Rename type 'Department'
+1567414355248	Rename type 'Employee'
+1567414620959	Rename type 'DepartmentMapper'
+1567414635044	Rename type 'EmployeeMapper'
+1567414661387	Rename resource 'DepartmentMapper.xml'
+1567414674465	Rename resource 'DepartmentMapper2.xml'
+1567414681823	Delete element
+1567414686521	Rename resource 'TeacherMapper2.xml'
+1567497616835	Delete elements
+1567499456032	Delete element
+1567500828013	Delete element
+1567501455394	Delete element
+1567501644399	Delete element
+1567501667473	Delete element
+1567501671857	Delete element
+1567501679371	Delete elements
+1567503891518	Rename resource 'Log4.propertise'
+1567503906471	Rename resource 'Log4j.propertise'
+1567503934210	Rename source folder 'resources'
+1567503955920	Rename source folder 'resource'
+1567503992291	Rename resource 'log4j.propertise'

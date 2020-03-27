@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<!-- 从classpath的根路径去加载db.properties文件 -->
+	<context:property-placeholder location="classpath:db.properties" system-properties-mode="NEVER" />
+
+	<!-- 配置一个druid的连接池 -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="initialSize" value="${jdbc.initialSize}" />
+	</bean>
+
+	<!-- 1:WHAT:配置JDBC事务管理器 -->
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- 2:WHEN:配置事务管理器增强 -->
+	<tx:advice id="crudAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<!-- service中的查询方法 -->
+			<tx:method name="get*" read-only="true" />
+			<tx:method name="list*" read-only="true" />
+			<tx:method name="query*" read-only="true" />
+			<!-- service中其他方法(非查询) -->
+			<tx:method name="*" />
+		</tx:attributes>
+	</tx:advice>
+	<!-- 3:WHERE:配置切面 -->
+	<aop:config>
+		<aop:pointcut expression="execution(* ByXML.service.*Service.*(..))" id="txPc" />
+		<aop:advisor advice-ref="crudAdvice" pointcut-ref="txPc" />
+	</aop:config>
+
+
+	<!-- 配置DAO -->
+	<bean id="employeeDAO" class="ByXML.dao.impl.EmployeeDAOImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- 配置Service -->
+	<bean id="employeeService" class="ByXML.service.impl.EmployeeServiceImpl">
+		<property name="dao" ref="employeeDAO" />
+	</bean>
+
+	<!-- 配置统一异常处理器，即不管什么异常都跳转到所设定的页面，不用自定义异常处理方法。这是简单的异常处理，属于XML配置模式 -->
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<!-- 设置错误的视图 -->
+		<property name="defaultErrorView" value="commons/error" />
+		<!-- 在错误页面,获取异常信息对象变量名称,缺省exception -->
+		<property name="exceptionAttribute" value="ex" />
+		<!-- 下面属性配置可以实现根据不同类型异常,跳转到不同的错误页 -->
+		<!-- <property name="exceptionMappings">
+			<value>
+			这里还可以继续扩展不同异常类型的异常处理
+			cn.wolfcode.p2p.web.exception.SecurityException=commons/nopermission
+			</value>
+			</property> -->
+	</bean>
+
+	<!-- 配置文件上传解析器 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 设置上传文件的最大尺寸为 1MB -->
+		<property name="maxUploadSize">
+			<value>1048576</value>
+		</property>
+	</bean>
+	配置文件上传解
+
+</beans>

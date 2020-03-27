@@ -1,0 +1,24 @@
+package com.wang.Impl;
+
+import java.util.Collections;
+import java.util.List;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.wang.Domain.Employee;
+import com.wang.Domain.PageResult;
+import com.wang.Mapper.EmployeetMapper;
+import com.wang.Params.QueryParams;
+import com.wang.Utils.MyBatisUtil;
+
+public class LimitServerImpl implements IEmployee {
+	private EmployeetMapper employeeMapper = MyBatisUtil.getMapper(EmployeetMapper.class);
+
+	@Override
+	public PageInfo<?> limtQuery(QueryParams qo) {
+		PageHelper.startPage(qo.getCurrentPage(),qo.getPageSize());
+		List<?> list = employeeMapper.queryList(qo);
+		return new PageInfo<>(list);
+	}
+
+}

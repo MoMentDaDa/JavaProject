@@ -1,0 +1,45 @@
+package MyServlet;
+
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * @ClassName: MyServletTest
+ * @Description: 测试手写Servlet
+ * @author: MoMent
+ * @date: 2020年3月1日 下午8:06:32
+ */
+@SuppressWarnings("all")
+public class MyServletTest extends MyHttpServlet {
+	private PrintWriter r;
+	private OutputStream out;
+
+	@Override
+	public void service(HttpServletRequest req, HttpServletResponse resp) {
+		// 字节输出流方式输出
+		/*resp.setHeader("Content-Type", "text/html;charset=UTF-8");
+		try {
+			out = resp.getOutputStream();
+			out.write("Spring Boot".getBytes());
+			out.write("凤姐".getBytes("UTF-8"));
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}*/
+
+		// 字符输出流方式输出
+		resp.setContentType("text/html;charset=utf-8");// 设置输出的数据的MIME格式,让网页以HTML格式输出,遵循格式
+		try {
+			r = resp.getWriter();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		r.println("师姐好美,");
+		r.println("师姐我要娶你");
+
+	}
+}

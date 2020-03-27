@@ -1,0 +1,16 @@
+1556713873124	Delete element
+1556713963175	Delete element
+1556715668735	Rename resource 'server'
+1556766805568	Rename package 'hello'
+1556766818190	Rename package 'Day0'
+1556778912966	Convert local variable 'encoding' to field
+1556778973806	Extract local variable 'config2'
+1556778986814	Convert local variable 'config2' to field
+1556780092474	Move compilation unit
+1556786286702	Rename compilation unit 'HttpServlet.java'
+1556786296875	Rename compilation unit 'MYHttpServlet.java'
+1556789975742	Rename type 'HttpServletRequesDemo'
+1556863998398	Copy file
+1556864706273	Delete element
+1556866169091	Rename type 'HttpServletRequestDemo'
+1556869156967	Rename type 'LoginServlet'

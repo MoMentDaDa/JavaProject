@@ -1,0 +1,5 @@
+package Request;
+// 从请求中获取多个对象。处理多个对象封装
+public class MultiParam {
+
+}

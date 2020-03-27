@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- 默认配置为构造器参数顺序 ，或者根据构造器参数索引，还有参数类型 -->
+	<!-- 构造器注入对象 -->
+	<bean id="employee" class="ConstructorDi_03.Constant.Employee">
+		<constructor-arg name="name" value="will" />
+		<constructor-arg name="age" value="17" />
+		<constructor-arg name="salary" value="1800" />
+	</bean>
+
+	<!-- 构造器注入对象类型 -->
+	<bean id="cat" class="ConstructorDi_03.Object.Cat1" />
+	<bean id="person" class="ConstructorDi_03.Object.Person1">
+		<constructor-arg name="cat" ref="cat" />
+	</bean>
+
+	<!-- 构造器注入对象类型 -->
+	<bean id="collect" class="ConstructorDi_03.Collection.CollectionBean">
+		<constructor-arg name="set">
+			<set>
+				<value>set1</value>
+				<value>set2</value>
+			</set>
+		</constructor-arg>
+		<constructor-arg name="list">
+			<list>
+				<value>list1</value>
+				<value>list2</value>
+			</list>
+		</constructor-arg>
+		<constructor-arg name="array">
+			<list>
+				<value>array1</value>
+				<value>array2</value>
+			</list>
+		</constructor-arg>
+		<constructor-arg name="map">
+			<map>
+				<entry key="key1" value="value1" />
+				<entry key="key2" value="value2" />
+			</map>
+		</constructor-arg>
+		<constructor-arg name="prop">
+			<props>
+				<prop key="pKey1">pVal1</prop>
+				<prop key="pKey2">pVal2</prop>
+			</props>
+		</constructor-arg>
+
+	</bean>
+</beans>
+ 

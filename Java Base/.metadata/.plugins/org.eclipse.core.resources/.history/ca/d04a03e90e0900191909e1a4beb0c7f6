@@ -1,0 +1,14 @@
+package Generic_JavaBook;
+
+import java.util.*;
+
+public class LimitBag <T extends Number>{
+private T content;
+
+	public static void main(String[] args) {
+		Limit<List>bag1=new LimitBag<List>(new ArrayList());
+		LimitBag<Integer>bag2=new LimitBag<Integer>(12);
+
+	}
+
+}

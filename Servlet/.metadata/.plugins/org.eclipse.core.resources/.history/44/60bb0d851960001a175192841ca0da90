@@ -1,0 +1,6 @@
+package SessionApply.userLogin;
+
+public class user {
+	private String username = null;
+	private String password = null;
+}

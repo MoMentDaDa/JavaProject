@@ -1,0 +1,21 @@
+package DOM4;
+import java.awt.List;
+import java.io.File;
+
+import org.dom4j.Document;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
+import org.junit.Test;
+
+public class testDOM4 {
+@Test
+private void testGetALL() {
+	File f = new File("C:\\Users\\汪哒哒\\Documents\\JavaProject\\JavaReinforce\\ReinForce\\resources\\Students.xml");
+	SAXReader r=new SAXReader();
+	Document doc=r.read(f);
+	System.out.println(doc);
+	//List<Elements> list=doc
+	
+
+}
+}

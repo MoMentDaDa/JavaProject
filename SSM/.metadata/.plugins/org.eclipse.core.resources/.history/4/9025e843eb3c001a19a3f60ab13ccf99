@@ -1,0 +1,5 @@
+package wang.ssm.Service;
+
+public interface userServiceDao {
+
+}

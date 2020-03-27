@@ -1,0 +1,8 @@
+package Java8;
+public class Lambda2 {
+	public static void main(String[] args) {
+		Worker greetService1 = message -> System.out.println("Hello " + message);
+	}
+	
+	Worker greetService1 = message -> System.out.println("Hello " + message);
+}

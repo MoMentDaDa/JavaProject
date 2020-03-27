@@ -1,0 +1,11 @@
+package TransactionByXML.Service.Impl;
+
+import Template.Dao.EmployeeDao;
+import Template.Domain.Employee;
+import TransactionByXML.Service.AccountServiceDao;
+import lombok.Setter;
+
+public class AccountImpl implements AccountServiceDao {
+
+
+}

@@ -1,0 +1,16 @@
+package Java8;
+
+import java.util.Arrays;
+
+public class lambda3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+public void test() {
+	Integer[] aa=new Integer[] {11,4,2,3,7,5,8};
+	Arrays.sort(aa,(x,y)->Integer.compare(x, y));
+	System.out.println(Arrays.toString(aa));
+}
+}

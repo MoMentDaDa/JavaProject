@@ -1,0 +1,20 @@
+package Java8;
+
+public class lambda2{
+
+	public static void main(String[] args)  {
+		Worker w=new Worker() {
+
+			@Override
+			public void dowork() {
+				System.out.println("Hello");
+				
+			}
+			
+		}
+
+	}
+
+
+
+}

@@ -1,0 +1,36 @@
+package ByAnno.Service.Impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import ByXML.Domain.User;
+import ByXML.Mapper.userMapperDao;
+import ByXML.Service.userServiceDao;
+
+@Service
+public class userMapperImpl implements userServiceDao {
+	@Autowired
+	private userMapperDao userMapper;
+
+	public void save(User u) {
+		userMapper.insert(u);
+	}
+
+	public void update(User u) {
+		userMapper.updateById(u);
+	}
+
+	public void delete(Long id) {
+		userMapper.deleteById(id);
+	}
+
+	public User get(Long id) {
+		return userMapper.selectById(id);
+	}
+
+	public List<User> listAll() {
+		return userMapper.selectAll();
+	}
+}

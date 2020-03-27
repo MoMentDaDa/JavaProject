@@ -1,0 +1,5 @@
+package Java8;
+@Worker
+public interface Worker {
+	void dowork();
+}

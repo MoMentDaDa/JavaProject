@@ -1,0 +1,20 @@
+package com.wang.Mapper;
+
+import java.util.List;
+
+import com.wang.Domain.Employee;
+import com.wang.Params.QueryParams;
+
+//高级查询+分页查询
+public interface EmployeetMapper {
+	// 高级查询
+	List<Employee> queryList(QueryParams params);
+
+	// 查询结果总数
+	//int queryForCount(QueryParams params);
+	
+	//分页查询
+	List<Employee> queryForLimit(QueryParams qo);
+
+	List<Employee> listAll();
+}

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0"
+	metadata-complete="false">
+
+	<!--在tomcat 服务器中运行时，如果不指名访问文件名，默认的根据项目名访问文件顺序如下配置 -->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- 告诉Tomcat来管理Servlet类 ,即配置映射关系 -->
+	<servlet>
+		<!--servlet-name 该名字可以自定义，但是默认就使用servlet的名字 -->
+		<servlet-name>HelloServlet</servlet-name>
+		<!--servlet-class要指明该servlet放在那个包下的 -->
+		<servlet-class>Day01.HelloServlet</servlet-class>
+	</servlet>
+	<!--Servlet的映射，即向外暴露该Servlet类的一个资源名称，供外键直接访问，资源名称必须以 / 打头 -->
+	<servlet-mapping>
+		<!-- 这个servlet-name要和上面的servlet-name名字一样，这样才能匹配的上 -->
+		<servlet-name>HelloServlet</servlet-name>
+		<!-- url-pattern 这是访问该servlet的资源部分 默认命名规范：就是该servlet的名字 -->
+		<url-pattern>/hello</url-pattern>
+	</servlet-mapping>
+
+	<!-- 通过实现servlet 配置获取参数 -->
+	<servlet>
+		<servlet-name>InitParamServlet</servlet-name>
+		<servlet-class>ServletConfig.InitParamServlet</servlet-class>
+		<!-- 初始化参数 ,一个patam为一个参数 -->
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>GBK</param-value>
+		</init-param>
+		<init-param>
+			<param-name>name</param-name>
+			<param-value>will</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitParamServlet</servlet-name>
+		<url-pattern>/InitParamServlet</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 通过继承GenericServlet 配置获取参数 -->
+	<servlet>
+		<servlet-name>GenericServletConfig</servlet-name>
+		<servlet-class>ServletConfig.GenericServletConfig</servlet-class>
+		<!-- 初始化参数 ,一个patam为一个参数 -->
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>GBK</param-value>
+		</init-param>
+		<init-param>
+			<param-name>name</param-name>
+			<param-value>will</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InitParamServlet</servlet-name>
+		<url-pattern>/InitParamServlet</url-pattern>
+	</servlet-mapping>
+
+</web-app>

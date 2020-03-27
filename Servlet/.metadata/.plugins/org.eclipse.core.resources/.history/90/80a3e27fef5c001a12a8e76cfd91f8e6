@@ -1,0 +1,25 @@
+package IncludeDemo;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/include/s2")
+public class Servlet2 extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/html;charset=utf-8");
+		System.out.println("请求之前，servlet2....");
+		String name=(String) req.getAttribute("name");
+		PrintWriter out = resp.getWriter();
+		out.println("请求没来，Servlet2......."+name);
+		System.out.println("请求来了，servlet2...."+name);
+	}
+}

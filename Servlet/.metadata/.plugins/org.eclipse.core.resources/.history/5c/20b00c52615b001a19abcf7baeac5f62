@@ -1,0 +1,7 @@
+package ServletConfig;
+
+import javax.servlet.Servlet;
+
+public class InitParamServlet implements Servlet{
+
+}

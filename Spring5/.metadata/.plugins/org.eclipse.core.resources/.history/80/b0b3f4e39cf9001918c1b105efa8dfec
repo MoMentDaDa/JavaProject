@@ -1,0 +1,11 @@
+package JavaConfig;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+
+//当前项目的连接池的配置类
+@Configuration
+@PropertySource("classpath:db.properties")//从哪里去加载配置文件
+public class DataSourceConfig {
+
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;MyBatis-many2one&apos;" deleteContents="false" description="Delete resource &apos;MyBatis-many2one&apos;" element1="/MyBatis-many2one" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1566119504720"/>
+</session>

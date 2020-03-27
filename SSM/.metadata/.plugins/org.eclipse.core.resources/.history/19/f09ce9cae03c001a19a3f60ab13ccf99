@@ -1,0 +1,5 @@
+package wang.ssm.Domain;
+
+public class User {
+
+}

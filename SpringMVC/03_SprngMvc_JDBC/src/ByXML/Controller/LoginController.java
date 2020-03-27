@@ -1,0 +1,28 @@
+package ByXML.Controller;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import ByXML.domain.Employee;
+import ByXML.service.IEmployeeService;
+
+@Controller
+public class LoginController {
+
+	@Autowired
+	private IEmployeeService employeeService;
+
+	@RequestMapping("/login")
+	public String login(String username, String password, HttpSession session) {
+		Employee current = employeeService.login(username, password);
+		if (current == null) {
+			session.setAttribute("errorMsg", "帐号或密码错误");
+			return "redirect:/login.jsp";
+		}
+		session.setAttribute("user_in_session", current);
+		return "redirect:/employee/list";
+	}
+}

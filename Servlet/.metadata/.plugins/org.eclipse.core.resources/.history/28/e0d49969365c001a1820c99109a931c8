@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>请输入以下内容，完成登录</h2>
+	<!-- 	
+		如果url-pattern 配置为/loginServlet,则该Servlet的路径:http://localhost:8080/02/loginServlet"
+ 		当前这个html的路径：http://localhost:8080/02/Views/login.html，当提交数据应写全路径，否者直接提交到:localhost/loginServlet,出现404错误
+ 		访问静态资源
+ 	-->
+	<form action="/loginServlet" method="get">
+		账号:<input type="text" name="username" /><br> 密码:<input
+			type="text" name="password" /><br> <input type="submit"
+			value="登录" />
+	</form>
+</body>
+</html>

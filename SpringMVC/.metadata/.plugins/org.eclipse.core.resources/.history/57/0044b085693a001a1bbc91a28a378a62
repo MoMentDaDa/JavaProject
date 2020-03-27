@@ -1,0 +1,30 @@
+package JDBC_Web;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+
+import JDBC_Web.domain.Employee;
+import JDBC_Web.service.IEmployeeService;
+@SpringJUnitConfig
+class IEmployeeServiceTest {
+	@Autowired
+	private IEmployeeService dao;
+
+	@Test
+	void test1() {
+		System.out.println("fsfsf");
+		List<Employee> list=dao.listAll();
+		System.out.println("fsfsf");
+		System.out.println(list.toString());
+	}
+	
+	@Test
+	void test2() {
+		Employee a=dao.get(2L);
+		System.out.println(a.toString());
+	}
+
+}

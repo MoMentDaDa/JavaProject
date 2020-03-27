@@ -1,0 +1,26 @@
+package ByXML;
+
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.jta.SpringJtaSynchronizationAdapter;
+
+import ByXML.Domain.User;
+import ByXML.Mapper.userMapperDao;
+
+class test {
+
+	@Autowired
+	private userMapperDao userService;
+
+	@Test
+	public void testListAll() throws Exception {
+		userService.selectAll().forEach(System.out::println);
+	}
+
+	@Test
+	public void testSave() throws Exception {
+		userService.insert(new User().setName("will").setAge(17));
+	}
+
+}

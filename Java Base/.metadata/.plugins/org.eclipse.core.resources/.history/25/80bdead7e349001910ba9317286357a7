@@ -1,0 +1,16 @@
+package Java8;
+
+public class User {
+	String name;
+	int age;
+	public User(String name1, int i) {
+		this.name=name1;
+		this.age=i;
+	}
+	@Override
+	public String toString() {
+		return "User [name=" + name + ", age=" + age + "]";
+	}
+	
+
+}

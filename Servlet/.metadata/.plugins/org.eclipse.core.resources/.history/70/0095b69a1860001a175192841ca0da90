@@ -1,0 +1,9 @@
+package SessionApply.Submit;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+@WebServlet("/session/submit")
+@SuppressWarnings("all")
+public class salveSubmit extends HttpServlet{
+
+}

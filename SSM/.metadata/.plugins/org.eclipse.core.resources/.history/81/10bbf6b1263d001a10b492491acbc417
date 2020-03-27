@@ -1,0 +1,23 @@
+package ByXML;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import ByXML.Mapper.userMapperDao;
+
+public class test {
+	@Autowired
+	private userMapperDao userService;
+
+	@Test
+	public void testListAll() throws Exception {
+		userService.listAll().forEach(System.out::println);
+	}
+
+	@Test
+	public void testSave() throws Exception {
+		userService.save(new User().setName("will").setAge(17));
+	}
+}

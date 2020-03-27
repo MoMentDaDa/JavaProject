@@ -1,0 +1,22 @@
+package IncludeDemo;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/include/Head")
+public class Head extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/html;charset=utf-8");
+		req.setCharacterEncoding("utf-8");
+		req.setAttribute("data", "师姐，你好漂亮");
+		resp.getWriter().write("this is head");
+	}
+}

@@ -1,0 +1,5 @@
+package wang.ssm.Service.Impl;
+
+public interface userServiceDao {
+
+}

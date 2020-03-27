@@ -1,0 +1,27 @@
+package MyServlet;
+
+import java.io.IOException;
+import java.util.Enumeration;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class Servlet1 extends MyHttpServlet {
+	public void init() {
+		System.out.println("�����ʼ�����������Զ���");
+	}
+
+	public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
+		Enumeration<String> en = getInitParameterNames();
+		while (en.hasMoreElements()) {
+			String name = en.nextElement();
+			System.out.println(name);
+		}
+		String encoding = getInitParameter("encoding");
+		System.out.println("encoding��" + encoding);
+		String name = getInitParameter("name");
+		System.out.println("name:" + name);
+	}
+}

@@ -1,0 +1,16 @@
+1570456470865	Delete element
+1570805635416	Delete element
+1570808066434	Copy package
+1570808173356	Delete element
+1570808217478	Copy compilation unit
+1570808231508	Move compilation unit
+1570808249976	Rename package 'LogUtil.Dao.Impl'
+1570808255272	Move compilation unit
+1570808266889	Move compilation unit
+1570808305121	Rename package 'LogUtil.Service'
+1570808318230	Rename package 'LogUtil.LogService'
+1570808334845	Rename package 'LogUtil.tx'
+1570808545662	Rename type 'DynamicAgent'
+1570808572667	Rename type 'TransactionManager'
+1570809196003	Delete element
+1570809759604	Rename package 'LogUtil.Service.Impl'

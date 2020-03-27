@@ -1,0 +1,21 @@
+package Request;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+//操作其他请求头中的其他信息
+@Controller
+@RequestMapping("/other")
+public class Other {
+	@RequestMapping("/test1")
+	private void test1(@RequestHeader("User-Agent") String userAgent, @RequestHeader("Host") String host,
+			@CookieValue("JSESSIONID") String cName) {
+		System.out.println("test1 is coming....");
+		System.out.println(userAgent);
+		System.out.println(host);
+
+	}
+
+}

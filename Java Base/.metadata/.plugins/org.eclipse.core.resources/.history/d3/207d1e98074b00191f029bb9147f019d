@@ -1,0 +1,22 @@
+package Java8;
+
+public class lambda2 implements Worker{
+
+	public static void main(String[] args)  {
+		lambda2 a = new lambda2();
+
+		test();
+
+	}
+
+	public static void test() {
+		new lambda2(() -> System.out.println("Helo world"));
+	}
+
+	@Override
+	public void dowork() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

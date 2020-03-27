@@ -1,0 +1,15 @@
+package TransactionByXML.Service;
+
+import Template.Domain.Employee;
+
+//定义一个注册的Dao
+public interface AccountServiceDao {
+	/**
+	 * 从指定账户转出指定金额给另一个账户
+	 * @param outId
+	 * @param inId
+	 * @param money
+	 */
+	void trans(Long outId, Long inId, int money);
+}
+}

@@ -1,0 +1,33 @@
+package JDBC_Web.domain;
+
+import java.util.Date;
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import lombok.Data;
+
+@Data
+public class Employee {
+	private Long id;
+
+	private String username;
+
+	private String password;
+
+	private Integer age;
+
+	private Date hiredate;
+	/*	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@NotNull(message = "年龄不能为空")
+	@Min(value=18,message="年龄最小值为18")
+	@Max(value=60,message="年龄最大值为60")
+	@NotNull(message = "{employee.username.notnull}")
+	@Size(max = 10, min = 4, message = "{employee.username.size}")
+	@NotNull(message = "密码不能为空")
+	@Size(max = 10, min = 4, message = "密码在4到10位之间")*/
+}

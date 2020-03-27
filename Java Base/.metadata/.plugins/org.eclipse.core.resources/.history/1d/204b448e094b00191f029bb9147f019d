@@ -1,0 +1,39 @@
+package Java8;
+
+import java.util.Arrays;
+
+public class lambda3 {
+
+	public static void main(String[] args) {
+		// test1();
+		test2();
+		test3();
+
+	}
+
+	private static void test3() {
+		lambda3 l=new lambda3();
+		Integer[] aa = new Integer[] { 11, 4, 2, 3, 7, 5, 8 };
+		Arrays.sort(aa, l::compare);
+
+	}
+
+	public void compare(Integer[] aa) {
+		Arrays.sort(aa, (x, y) -> Integer.compare(x, y));
+		System.out.println(Arrays.toString(aa));
+	}
+
+	public static void test1() {
+		Integer[] aa = new Integer[] { 11, 4, 2, 3, 7, 5, 8 };
+		Arrays.sort(aa, (x, y) -> Integer.compare(x, y));
+		System.out.println(Arrays.toString(aa));
+	}
+
+//通过Lambda进行简化，即为类方法的引用（类：：静态方法）
+	public static void test2() {
+		Integer[] aa = new Integer[] { 11, 4, 2, 3, 7, 5, 8 };
+		Arrays.sort(aa, Integer::compare);
+		System.out.println(Arrays.toString(aa));
+	}
+
+}

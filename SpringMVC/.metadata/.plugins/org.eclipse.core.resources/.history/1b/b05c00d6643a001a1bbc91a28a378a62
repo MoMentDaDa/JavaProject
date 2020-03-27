@@ -1,0 +1,19 @@
+package JDBC_Web;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import JDBC_Web.service.IEmployeeService;
+
+class IEmployeeServiceTest {
+	@Autowired
+	private IEmployeeService s;
+
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+}

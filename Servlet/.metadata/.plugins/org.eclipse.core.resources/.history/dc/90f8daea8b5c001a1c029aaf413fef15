@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>这是我的首页
+
+	<a href="/02/login/countSrevlet">获取网站登录成功总数 </a>
+</body>
+</html>

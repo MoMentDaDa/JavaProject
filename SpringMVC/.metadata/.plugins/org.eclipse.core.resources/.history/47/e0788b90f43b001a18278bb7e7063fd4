@@ -1,0 +1,12 @@
+package ByAnno.exception;
+
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+public class Handexception {
+	@ExceptionHandler
+	public String error(Exception ex, Model model) {
+		model.addAttribute("errorMsg", ex.getMessage());
+		return "commons/error";
+	}
+}

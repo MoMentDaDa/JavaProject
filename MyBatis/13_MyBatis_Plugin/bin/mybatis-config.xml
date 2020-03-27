@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="db.properties"></properties>
+
+	<settings>
+		<setting name="logImpl" value="log4j" />
+		<!-- 开启懒加载模式 -->
+		<setting name="lazyLoadingEnabled" value="true" />
+		<!-- 禁用积极延迟加载 -->
+		<setting name="aggressiveLazyLoading" value="false" />
+		<!-- 延迟加载触发方法 -->
+		<setting name="lazyLoadTriggerMethods" value="clone" />
+
+		<!-- 开启二级缓存 -->
+		<setting name="cacheEnabled" value="true" />
+	</settings>
+
+	<typeAliases>
+		<package name="com.wang.Object" />
+	</typeAliases>
+
+	<!--注册拦截器 -->
+	<plugins>
+		<plugin interceptor="com.wang.DemoInterceptor">
+			<property name="aaa" value="xyz" />
+			<property name="bbb" value="123" />
+		</plugin>
+	</plugins>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driver}" />
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<mappers>
+		<mapper resource="com/wang/Mapper/UserMapper.xml" />
+	</mappers>
+</configuration>

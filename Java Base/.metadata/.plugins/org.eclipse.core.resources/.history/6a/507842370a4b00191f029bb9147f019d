@@ -1,0 +1,14 @@
+package Java8;
+
+public class lambda2{
+	GreetingService greetService1 = message -> System.out.println("Hello " + message);
+
+	
+		
+	
+}
+		
+
+
+
+

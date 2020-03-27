@@ -1,0 +1,36 @@
+package showGoodsHistory;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/showbooks")
+@SuppressWarnings("all")
+public class goodShow extends HttpServlet {
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		resp.setContentType("text/html;charset=UTF-8");
+		PrintWriter w = resp.getWriter();
+		w.write("网页上所有的书籍：" + "<br/>");
+		// 拿到数据库所有的书
+		LinkedHashMap<String, Book> DB = Book.getAll();
+		Set<Map.Entry<String, Book>> entry = DB.entrySet();
+		// 显示所有的书到网页上
+		for (Map.Entry<String, Book> stringBookEntry : entry) {
+			Book book = stringBookEntry.getValue();
+			w.write("<a href=/04/showbooks/datils?id=" + book.getId() + " target=\"_blank\">" + book.getId() + "   " + book.getName() + "</a>");
+			w.write("<br/>");
+		}
+
+	}
+
+}

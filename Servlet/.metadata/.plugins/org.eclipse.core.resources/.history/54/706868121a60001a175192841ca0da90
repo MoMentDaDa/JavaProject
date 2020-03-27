@@ -1,0 +1,45 @@
+package SessionApply.userLogin;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class user {
+	static List<user> list=new ArrayList<user>();
+	static{
+		list.add(new user("aaa", "111"));
+		list.add(new user("bbb", "222"));
+		list.add(new user("ccc", "333"));
+	}
+	private String username = null;
+	private String password = null;
+
+	public user() {
+	}
+
+	@Override
+	public String toString() {
+		return "user [username=" + username + ", password=" + password + "]";
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public user(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+}

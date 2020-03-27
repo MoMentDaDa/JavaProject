@@ -1,0 +1,6 @@
+package ByAnno.Interceptor;
+
+//登录检查拦截器
+public class CheckLoging {
+
+}

@@ -1,0 +1,6 @@
+#连接数据库的四个基本要素
+jdbc.driverClassName=com.mysql.jdbc.Driver
+jdbc.url=jdbc:mysql://localhost:3306/ssmdemo
+jdbc.username=will
+jdbc.password=will1234
+#druid连接池其他配置,省略

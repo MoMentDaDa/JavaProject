@@ -1,0 +1,9 @@
+package wang.ssm.Domain;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Accessors(chain = true)
+public class User {
+
+}

@@ -1,0 +1,69 @@
+package RequestMethod;
+
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Enumeration;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * @ClassName: CommonMethods
+ * @Description: 演示req常用方法
+ * @author: MoMent
+ * @date: 2020年3月2日 下午3:27:02
+ */
+@SuppressWarnings("all")
+public class CommonMethods extends HttpServlet {
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	/*	
+		// 1. 获取请求头的方法演示
+		System.out.println("localhost:" + req.getHeader("Host"));
+		System.out.println("" + req.getIntHeader("DNT"));
+		// 获取所有头信息,并迭代显示
+		Enumeration<String> headerNames = req.getHeaderNames();
+		while (headerNames.hasMoreElements()) {
+			String name = (String) headerNames.nextElement();
+			String value = req.getHeader(name);
+			System.out.println(name + "=" + value);
+
+		}
+	*/
+		// 2. 获取到的是客户端提交上来的数据
+		// 表单Post方式
+		req.setCharacterEncoding("UTF-8");// 设置req字符编码的格式
+		// 通过html的name属性，获取到值
+		System.out.println(req.getParameter("username"));
+		System.out.println(req.getParameter("password"));
+		System.out.println(req.getParameter("gender"));
+		// 复选框和下拉框有多个值，获取到多个值
+		System.out.println(Arrays.toString(req.getParameterValues("hobbies")));
+		System.out.println(Arrays.toString(req.getParameterValues("address")));
+		System.out.println(req.getParameter("textarea")); // 获取到文本域的值
+		System.out.println(req.getParameter("aaa"));// 得到隐藏域的值
+		Enumeration<String> parameterNames = req.getParameterNames(); // 获取所有的参数，得到一个枚举集合
+		while (parameterNames.hasMoreElements()) {
+			String name = (String) parameterNames.nextElement();
+			String value = req.getParameter(name);
+			System.out.println(name + "=" + value);
+
+		}
+		/*
+				Map<String, String[]> map = req.getParameterMap();
+		
+				Set<String> keySet = map.keySet();
+				Iterator<String> iterator = keySet.iterator();
+				while (iterator.hasNext()) {
+					String key = (String) iterator.next();
+					System.out.println("key=" + key + "--的值总数有：" + map.get(key).length);
+					String value = map.get(key)[0];
+					String value1 = map.get(key)[1];
+					String value2 = map.get(key)[2];
+		
+					System.out.println(key + " == " + value + "=" + value1 + "=" + value2);
+				}*/
+	}
+}

@@ -1,0 +1,32 @@
+package ByAnno.WebController;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/user")
+public class userController {
+	@Autowired
+	private IUserService userService;
+
+	@RequestMapping("/list")
+	public String list(Model model) {
+		model.addAttribute("users", userService.listAll());
+		return "user/list";
+	}
+
+	@RequestMapping("/input")
+	public String input(Long id, Model model) {
+		if (id != null) {
+			model.addAttribute("user", userService.get(id));
+		}
+		return "user/input";
+	}
+
+	@RequestMapping("/delete")
+	public String delete(Long id) {
+	if (id != null) {
+	userService.delete(id);
+	}
+	return "redirect:/user/list"
+}

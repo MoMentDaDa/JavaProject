@@ -1,0 +1,56 @@
+package ServletConfig;
+
+import java.io.IOException;
+import java.util.Enumeration;
+
+import javax.servlet.Servlet;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
+/**
+ * @ClassName: InitParamServlet
+ * @Description: 通过实现servlet 接口获取一个servletConfig对象，然后获取配置信息
+ * @author: MoMent
+ * @date: 2020年3月1日 上午10:06:15
+ */
+public class InitParamServlet implements Servlet {
+	private ServletConfig config;
+
+	public void init(ServletConfig config) throws ServletException {
+		this.config = config;
+		// ��ӡ���������Ϣ
+		System.out.println(config);
+	}
+
+	@Override
+	public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
+		Enumeration<String> en = config.getInitParameterNames();
+		while (en.hasMoreElements()) {
+			String name = en.nextElement();
+			System.out.println(name);
+		}
+		String encoding = config.getInitParameter("encoding");
+		System.out.println("encoding��" + encoding);
+		String name = config.getInitParameter("name");
+		System.out.println("name:" + name);
+		if ("GBK".equals(encoding)) {
+			System.out.println("�������");
+		} else {
+			System.out.println("ʦ�����Ư��");
+		}
+	}
+
+	public String getServletInfo() {
+		return null;
+	}
+
+	public void destroy() {
+
+	}
+
+	public ServletConfig getServletConfig() {
+		return null;
+	}
+}

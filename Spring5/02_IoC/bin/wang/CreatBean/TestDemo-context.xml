@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 构造器实例化（无参数构造器），最标准，使用最多。 -->
+	<bean id="cat1" class="wang.CreatBean.way1.cat1"></bean>
+	<!-- ②.静态工厂方法实例化：解决系统遗留问题 -->
+	<bean id="staticFactory" class="wang.CreatBean.way2.cat2Factory" factory-method="createInstance"></bean>
+	<!-- ③.实例工厂方法实例化：解决系统遗留问题 ，Factory 相当于创建的工厂实例对象-->
+	<bean id="Factory" class="wang.CreatBean.way3.Factory"></bean>
+	<bean id="cat3" factory-bean="Factory" factory-method="createInstance"></bean>
+	
+	<!-- ④.实现FactoryBean接口实例化：实例工厂变种，如集成MyBatis框架使用 -->
+	<bean id="cat4" class="wang.CreatBean.way4.FactoryDao"></bean>
+</beans>

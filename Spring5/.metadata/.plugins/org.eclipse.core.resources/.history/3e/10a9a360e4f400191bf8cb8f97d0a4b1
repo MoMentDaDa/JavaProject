@@ -1,0 +1,8 @@
+package TransactionByXML.Service;
+
+import Template.Domain.Employee;
+
+public interface AccountServiceDao {
+
+	void trans(Long outId, Long inId, int money);
+}

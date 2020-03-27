@@ -1,0 +1,9 @@
+package TransactionByXML.Dao;
+
+public interface AccountDao {
+
+	
+	void transOut(Long outId, int money);
+
+	void transIn(Long inId, int money);
+}

@@ -1,0 +1,70 @@
+package Java8;
+
+import java.awt.Button;
+import java.awt.Frame;
+import java.awt.event.ActionEvent;
+import java.util.Arrays;
+
+public class LambdaGrammarDemo {
+	public static void main(String[] args) {
+		// test2();
+		test3();
+		test4();
+		
+		test6("hello", 10);
+	}
+
+//无参数情况的Lambda,直接用（）,括号不能省略
+	public static void test1() {
+		new Thread(() -> System.out.println("Hello world")).start();
+	}
+
+//一个参数的Lambda，而且参数写了类型，这个参数外面一定加（），反之不加括号
+	public static void test2() {
+		Frame f = new Frame();
+		f.setSize(200, 300);
+		Button b = new Button("Lambda");
+		b.addActionListener((ActionEvent event) -> System.out.println("HelloLambda"));
+		f.add(b);
+		f.setVisible(true);
+	}
+
+//两个参数，一定加（）,不管是否写参数类型
+	private static void test3() {
+		String[] strs = new String[] { "afdaga", "afdagwgdgeg", "ddfa", "asf" };
+		Arrays.sort(strs, (s1, s2) -> Integer.compare(s1.length(), s2.length()));
+		System.out.println(Arrays.toString(strs));
+	}
+
+//参数加修饰符或者标签，一定要加参数完整类型
+	private static void test4() {
+		String[] strs = new String[] { "afdaga", "afdagwgdgeg", "ddfa", "asf" };
+		Arrays.sort(strs, (final String s1, final String s2) -> Integer.compare(s1.length(), s2.length()));
+		System.out.println(Arrays.toString(strs));
+	}
+
+// 如果表达式只有1行，那么可以直接写（不需要花括号）
+// 如果为多行，必须要花括号使代码成为代码块，如有返回值，一定需要返回值。
+// 如果只是单行，且需要返回值，编译器会自动推到return
+	private static void test5() {
+		String[] strs = new String[] { "afdaga", "afdagwgdgeg", "ddfa", "asf" };
+		Arrays.sort(strs, (final String s1, final String s2) -> Integer.compare(s1.length(), s2.length()));
+		System.out.println(Arrays.toString(strs));
+	}
+
+// 在Lambda表达式使用中，有三种变量，除了下面的所述，其余都称为自由变量。自由变量都会翻译为final
+//操作自由变量的代码块称为闭包
+	private static void test6(String content, int times) {// 参数
+		Runnable run = () -> {
+			// 以下for循环中的是局部变量
+			for (int i = 0; i < times; i++) {
+				System.out.println(content);
+				// content="aaaa"; Lambda表达式外面的局部变量（虽然没有finali修饰也）会被JVM隐式的编译成final类型
+			}
+			//this是引用的外部类的实例
+			System.out.println(this);
+		};
+		new Thread(run).start();
+	}
+
+}

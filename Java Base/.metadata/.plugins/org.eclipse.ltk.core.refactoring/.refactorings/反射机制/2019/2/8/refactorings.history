@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;反射机制/resources/db,properties&apos; to &apos;db.properties&apos;" description="Rename resource &apos;db,properties&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="resources/db,properties" name="db.properties" stamp="1550546167248" updateReferences="true"/>
+</session>

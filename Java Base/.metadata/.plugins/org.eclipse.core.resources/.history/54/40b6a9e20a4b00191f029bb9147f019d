@@ -1,0 +1,18 @@
+package Java8;
+public class Lambda2 {
+	public Lambda2(Worker worker) {
+		System.out.println("Hello");
+	}
+
+	public static void main(String[] args) {
+		Lambda2 l=new Lambda2(new Worker() {
+			public void sayMessage(String message) {
+				System.out.println("Hello");
+				
+			}
+		});
+		
+	}
+	
+	
+}

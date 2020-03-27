@@ -1,0 +1,7 @@
+package Day01;
+
+import javax.servlet.GenericServlet;
+
+public class ServletConfigTest extends GenericServlet{
+
+}

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="true"/>
+		<item key="selection" value="8080"/>
+		<list key="findhistory">
+			<item value="8080"/>
+			<item value="tr"/>
+			<item value="Mouse"/>
+			<item value="system"/>
+			<item value="sys"/>
+			<item value="syso"/>
+			<item value="s"/>
+			<item value="\"/>
+			<item value="\} catch \(SQLException e\) \{\R\t\t\t\te\.printStackTrace\(\);\R\t\t\t\}"/>
+			<item value="package JDBC_Apart\.Util;\R\Rimport java\.io\.InputStream;\Rimport java\.sql\.Connection;\Rimport java\.util\.LinkedList;\Rimport java\.util\.Properties;\R\Rimport javax\.sql\.DataSource;\R\Rimport com\.alibaba\.druid\.pool\.DruidDataSourceFactory;\R\Rpublic class SQL_Util \{\R\tprivate static Properties p = new Properties\(\);\R\tstatic LinkedList&lt;Connection&gt; pool = new LinkedList&lt;&gt;\(\);\R\tstatic DataSource dataSource;\R\R\t// 读取和加载properties文件\R\tstatic \{\R\t\ttry \{\R\t\t\tInputStream in = Thread\.currentThread\(\)\.getContextClassLoader\(\)\.getResourceAsStream\(&quot;db\.properties&quot;\);\R\t\t\tp\.load\(in\);\R\t\t\tdataSource = DruidDataSourceFactory\.createDataSource\(p\);\R\t\t\} catch \(Exception e\) \{\R\t\t\te\.printStackTrace\(\);\R\t\t\}\R\t\}\R\R\t// //获取连接\R\tpublic static Connection getcom\(\) \{\R\t\ttry \{\R\t\t\tConnection com = dataSource\.getConnection\(\);\R\t\t\treturn com;\R\t\t\} catch \(Exception e\) \{\R\t\t\te\.printStackTrace\(\);\R\t\t\}\R\t\treturn null;\R\t\}\R\R\tpublic static Connection realGetcom\(\) \{\R\R\t\tSystem\.out\.println\(&quot;从池中获取一个连接&quot;\);\R\t\tConnection conn = pool\.removeFirst\(\);\R\t\tSystem\.out\.println\(conn\);\R\t\tConnectionWarp myConn = new ConnectionWarp\(conn, pool\);\R\t\treturn conn;\R\t\}\R\R\t/\*\R\t \* public static void close\(Connection com, Statement st, ResultSet rs\) \{ try \{\R\t \* if \(rs != null\) \{ rs\.close\(\); \} \} catch \(Exception e2\) \{ \} finally \{ if \(st\R\t \* != null\) \{ try \{ st\.close\(\); \} catch \(SQLException e\) \{ \} \} if \(com != null\)\R\t \* \{ try \{ com\.close\(\); \} catch \(SQLException e\) \{ e\.printStackTrace\(\); \} \} \} \}\R\t \*/\R\}\R"/>
+			<item value="jsp"/>
+			<item value="jsp`"/>
+			<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;"/>
+			<item value="&quot;"/>
+			<item value="&apos;&apos;"/>
+		</list>
+		<list key="replacehistory">
+			<item value="td"/>
+			<item value="MouseDir"/>
+			<item value="/"/>
+			<item value=""/>
+			<item value="&apos;"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="1043"/>
+		<item key="DIALOG_Y_ORIGIN" value="172"/>
+		<item key="DIALOG_WIDTH" value="356"/>
+		<item key="DIALOG_HEIGHT" value="454"/>
+		<item key="DIALOG_FONT_NAME" value="1|Microsoft YaHei UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Microsoft YaHei UI"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="608"/>
+		<item key="DIALOG_Y_ORIGIN" value="357"/>
+	</section>
+</section>

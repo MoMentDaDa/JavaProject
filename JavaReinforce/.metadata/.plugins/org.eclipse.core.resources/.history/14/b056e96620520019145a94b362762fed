@@ -1,0 +1,12 @@
+package DOM4j;
+
+import java.io.File;
+import org.dom4j.Document;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
+import org.junit.Test;
+
+public class hkj {
+		
+	}
+}

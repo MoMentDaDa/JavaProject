@@ -1,0 +1,18 @@
+package TransactionByXML;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+
+import TransactionByXML.Service.AccountServiceDao;
+
+@SpringJUnitConfig
+class TestDemo {
+	@Autowired
+	private AccountServiceDao service;
+
+	@Test
+	void testTrans() throws Exception {
+		service.trans(1L, 2L, 100);
+	}
+}

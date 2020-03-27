@@ -1,0 +1,8 @@
+package com.wang.Impl;
+
+import com.github.pagehelper.PageInfo;
+import com.wang.Params.QueryObject;
+//定义分页查询 DAO,
+public interface IEmployee {
+	PageInfo<?> limtQuery(QueryObject qo);
+}

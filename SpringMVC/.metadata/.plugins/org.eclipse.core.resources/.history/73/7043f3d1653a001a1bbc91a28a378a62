@@ -1,0 +1,20 @@
+package JDBC_Web;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import JDBC_Web.domain.Employee;
+import JDBC_Web.service.IEmployeeService;
+
+class IEmployeeServiceTest {
+	@Autowired
+	private IEmployeeService s;
+
+	@Test
+	void test1() {
+		List<Employee> list=s.listAll();
+	}
+
+}

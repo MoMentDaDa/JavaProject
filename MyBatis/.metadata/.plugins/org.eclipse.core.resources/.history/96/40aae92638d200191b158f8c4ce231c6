@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wang.Mapper.EmployeetMapper">
+	<!--定义查询的公共的SQL -->
+	<sql id="basic ">
+		<where>
+			<if test="nameWord!=null">
+				<bind name="nameWord" value="%'+nameWord'%'" />
+				
+				and name like #{nameWord}
+				<bind name="keyWordLike" value="%'+KeyWord+'%'" />
+				and (name like #{keyWordLike} or sn like #{keyWordLike})
+			</if>
+			<if test="deptId!=-1">
+				and deptID=#{deptId}
+			</if>
+		</where>
+	</sql>
+
+	<!-- 高级查询 -->
+	<select id="queryList" resultType="com.wang.Domain.Employee">
+		SELECT id,name,deptID FROM employee
+		<include refid="basic "></include>
+	</select>
+
+
+	<!--高级+分页查询 -->
+	<select id="queryForLimit" resultType="com.wang.Domain.Employee">
+		SELECT id,name,deptId FROM employee
+		<include refid="basic "></include>
+	</select>
+	
+	<select id="listAll" resultType="com.wang.Domain.Employee">
+		select id,name,deptID from employee
+	</select>
+	
+
+</mapper>

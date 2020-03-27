@@ -1,0 +1,43 @@
+package MyServlet;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * @ClassName: MyHttpServlet
+ * @Description: 继承自己手写的GeneralServlet手写MyHttpServlet
+ * @author: MoMent
+ * @date: 2020年3月1日 下午7:15:10
+ */
+@SuppressWarnings("all")
+public class MyHttpServlet extends MyGeneralServlet {
+	public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
+		// 由于ServletRequest和ServletResponse，只能处理一般的请求，对于https需要另外定义，因为https为其的特殊情况
+		HttpServletRequest hreq = (HttpServletRequest) req;
+		HttpServletResponse hres = (HttpServletResponse) res;
+		service(hreq, hres);// 调用http请求方法，实现不同的分发操作
+	}
+
+	// 专门处理HTTP请求
+	public void service(HttpServletRequest hreq, HttpServletResponse hres) {
+		String method = hreq.getMethod();
+		if ("GET".equals(method)) {
+			doGet(hreq, hres);
+		} else {
+			doPose(hreq, hres);
+		}
+	}
+
+	// 专门用于处理POST请求
+	private void doPose(HttpServletRequest hreq, HttpServletResponse hres) {
+	}
+
+	// 专门用于处理GET请求
+	private void doGet(HttpServletRequest hreq, HttpServletResponse hres) {
+	}
+}

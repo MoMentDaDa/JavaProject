@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 不同的mapper文件的namespace是不一样的. 如果使用Mapper接口应使用其对应的dao全限定名称 -->
+<mapper namespace="com.wang.Mapper.EmployeetMapper">
+
+
+	<select id="queryMinsalary" resultType="com.wang.Domain.Employee">
+		SELECT id,name,sn,salary FROM employee
+		<if test="minSalary!=null"> WHERE salary >= #{minSalary} </if>
+	</select>
+
+	<select id="quer2" resultType="com.wang.Domain.Employee">
+		SELECT id,name,sn,salary FROM employee
+		<if test="minSalary!=null"> WHERE salary >= #{minSalary} </if>
+		<if test="maxSalary!=null"> AND salary &lt;= #{maxSalary} </if>
+	</select>
+
+	<select id="query3" resultType="com.wang.Domain.Employee">
+		<!-- SELECT id,name,sn,salary FROM employee WHERE 1 = 1   可以通过 WHERE 元素替换第一个关键字，解决1=1 -->
+		SELECT id,name,sn,salary FROM employee
+		<where>
+			<if test="minSalary!=null"> AND salary >= #{minSalary} </if>
+			<if test="maxSalary!=null"> AND salary &lt;= #{maxSalary} </if>
+			<choose>
+				<when test="deptId > 0"> AND deptID = #{deptId} </when>
+				<otherwise> AND deptID IS NOT NULL </otherwise>
+			</choose>
+		</where>
+	</select>
+	
+	<select id="query4" resultType="com.wang.Domain.Employee">
+		<!-- SELECT id,name,sn,salary FROM employee WHERE 1 = 1   可以通过 WHERE 元素替换第一个关键字，解决1=1 -->
+		SELECT id,name,sn,salary FROM employee
+		<!-- 
+			trim属性介绍：
+				prefix 属性：在这个字符串之前插入 prefix 的值
+				prefixOverrides 属性：并且字符串以 prefixOverrides 中的内容打头（可以包含管道符号），那么使用 prefix 的值替换内容开头
+				suffix 属性：在这个字符串之后插入 suffix 的值
+				suffixOverrides 属性：以 suffixOverrides 值结尾，则使用 suffix 的值替换
+		 -->
+		<trim prefix="where" prefixOverrides="AND |OR" suffix="set" suffixOverrides=",">
+			<if test="minSalary!=null"> AND salary >= #{minSalary} </if>
+			<if test="maxSalary!=null"> AND salary &lt;= #{maxSalary} </if>
+		</trim>
+	</select>
+
+	
+ 	<update id="update1">
+		<!-- update employee set username=#{username},password=#{password},salary=#{salary},deptID=#{deptId} where id=#{id} -->
+		UPDATE employee
+		<set>
+			<if test="name!=null">
+				username = #{name},
+			</if>
+			<if test="sn!=null">
+				sn = #{sn},
+			</if>
+			<if test="name!=null">
+				salary = #{salary},
+			</if>
+		</set>
+		WHERE id = #{id}
+	</update>
+
+	
+	<delete id="batchDelete">
+		<!-- delete from employee where id in (1,2,3,4,5) -->
+		<!-- 
+				foreach属性介绍：
+					collection属性：表示对哪一个集合或数组进行迭代
+									如果参数为数组类型，此时Map的Key为array
+									如果参数为List类型，此时Map的Key为list
+									我们可以使用在Dao中使用注解规定是Map的Key为什么
+					open属性：在迭代集合之前，拼接什么符号
+					close属性：在迭代集合之后，拼接什么符号
+					separator属性：在迭代元素是，每个元素之间使用什么符号隔开
+					item属性：被迭代的每个元素的变量
+					index属性：迭代的索引
+		 -->
+		DELETE FROM employee WHERE id IN
+		<foreach collection="ids" open="(" close=")" separator="," item="id">#{id}</foreach>
+	</delete>
+	
+	<insert id="batchSave">
+		<!-- INSERT INTO employee (name,sn,salary,dept_id) VALUES ('小 A','aaa',800.00,10),('小 B','bbb',700.00,10),('小 C','ccc',600.00,10) -->
+		INSERT INTO employee (name,sn,salary,deptID) VALUES
+		<foreach collection="em" open="" close="" separator="," item="u">(#{u.name},#{u.sn},#{u.salary},#{u.deptID})</foreach>
+	</insert>
+	
+</mapper>

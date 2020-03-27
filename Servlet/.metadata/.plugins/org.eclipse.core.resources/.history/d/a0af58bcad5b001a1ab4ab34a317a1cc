@@ -1,0 +1,69 @@
+package MyServlet;
+
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.Enumeration;
+import javax.servlet.Servlet;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+
+abstract public class MyGeneralServlet implements Servlet, ServletConfig, Serializable {
+	private ServletConfig config;
+
+	@Override
+	public void init(ServletConfig config) throws ServletException {
+		this.config = config;
+		this.init();
+	}
+
+	// �ṩһ���������޲����ĳ�ʼ��init��������������ʵ���Զ����ʼ������
+	public void init() {
+	}
+
+//���Ⱪ¶�ӿڣ����ظ�config����
+	@Override
+	public ServletConfig getServletConfig() {
+		return this.config;
+	}
+
+//ʹ�ó�����ʵ�ַ���ı��븲д
+	@Override
+	abstract public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException;
+
+	@Override
+	public String getServletInfo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void destroy() {
+		// TODO Auto-generated method stub
+
+	}
+
+//ʵ��configδʵ�ֵķ���
+	@Override
+	public String getServletName() {
+		return config.getServletName();
+	}
+
+	@Override
+	public ServletContext getServletContext() {
+		return config.getServletContext();
+	}
+
+	@Override
+	public String getInitParameter(String name) {
+		return config.getInitParameter(name);
+	}
+
+	@Override
+	public Enumeration<String> getInitParameterNames() {
+		return config.getInitParameterNames();
+	}
+
+}

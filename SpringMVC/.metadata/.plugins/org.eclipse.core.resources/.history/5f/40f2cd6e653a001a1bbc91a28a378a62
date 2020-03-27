@@ -1,0 +1,53 @@
+package JDBC_Web.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import JDBC_Web.dao.IEmployeeDAO;
+import JDBC_Web.domain.Employee;
+import JDBC_Web.service.IEmployeeService;
+
+
+@Service
+@Transactional
+public class EmployeeServiceImpl implements IEmployeeService {
+	@Autowired
+	private IEmployeeDAO dao;
+
+	@Override
+	public Employee get(Long id) {
+		dao.get(id);
+		return null;
+	}
+
+	@Override
+	public List<Employee> listAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void save(Employee emp) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(Employee emp) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+
+
+}

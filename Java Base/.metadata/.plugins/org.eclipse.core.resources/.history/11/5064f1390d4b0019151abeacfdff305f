@@ -1,0 +1,7 @@
+package Java8;
+@FunctionalInterface
+public interface Worker {
+	  void sayMessage(String message);
+	//void dowork();
+	//void dowork2();函数式接口只能有一个抽象方法
+}

@@ -1,0 +1,6 @@
+package TransactionByXML.Dao;
+
+public interface AccountDao {
+	private Long id;
+	private int balance;	
+}

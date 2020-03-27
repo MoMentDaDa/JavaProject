@@ -1,0 +1,22 @@
+package DOM4j;
+
+import java.io.File;
+import org.dom4j.Document;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
+import org.junit.Test;
+
+public class hkj {
+		@Test
+		public void testGetALL() throws Exception {
+			File f = new File(
+					"C:\\Users\\汪哒哒\\Documents\\JavaProject\\JavaReinforce\\ReinForce\\resources\\Students.xml");
+			SAXReader r = new SAXReader();
+			Document doc = r.read(f);
+			Element rootEle = doc.getRootElement();
+			System.out.println(rootEle);
+			// List<Elements> list=doc
+
+		}
+	}
+}

@@ -1,0 +1,5 @@
+package TransactionByXML.Dao;
+
+public interface AccountDao {
+
+}

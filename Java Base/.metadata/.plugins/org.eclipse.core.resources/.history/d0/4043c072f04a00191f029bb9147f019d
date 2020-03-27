@@ -1,0 +1,11 @@
+package Java8;
+
+public class lambda2 {
+	public void lambdawork(FunctionalInterface w) {
+		System.out.println("先执行lambda2的方法");
+		w.dowork();
+	}
+	public void test() {
+
+	}
+}

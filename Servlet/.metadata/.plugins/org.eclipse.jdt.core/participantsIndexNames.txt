@@ -1,0 +1,21 @@
+INDEX VERSION 1.131
+F:\JavaProject\Servlet\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2271935850.index
+\HelloWorld\src
+F:\JavaProject\Servlet\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2673690810.index
+\File_Uping\src
+F:\JavaProject\Servlet\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\103101125.index
+\01_servletInterface\src
+F:\JavaProject\Servlet\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\28573497.index
+\01_Hello-MVC\src
+F:\JavaProject\Servlet\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3752557230.index
+\CookieDemo02\src
+F:\JavaProject\Servlet\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1918791884.index
+\04\src
+F:\JavaProject\Servlet\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1059624634.index
+\01_ServletInterface2\src
+F:\JavaProject\Servlet\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2205149898.index
+\Demo03\src
+F:\JavaProject\Servlet\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4176727231.index
+\01_ServletInterface\src
+F:\JavaProject\Servlet\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3201543893.index
+\01_Servlet_Interface\src

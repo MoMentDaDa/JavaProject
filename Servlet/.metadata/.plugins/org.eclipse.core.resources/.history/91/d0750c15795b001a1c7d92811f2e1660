@@ -1,0 +1,34 @@
+package ServletConfig;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * @ClassName: Communication
+ * @Description: 演示通过ServletContext实现通讯
+ * @author: MoMent
+ * @date: 2020年3月1日 上午11:04:01
+ */
+@SuppressWarnings("all")
+public class Context2 extends HttpServlet {
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// 获取 context 对象
+		ServletContext context = this.getServletContext();
+		// 从 GenericServletConfig 获取数据
+		System.out.println(context.getAttribute("myValue"));
+		System.out.println();
+		// 获取整个站点的配置信息
+		System.out.println(context.getInitParameter("webConfig"));
+		System.out.println();
+
+	}
+
+}

@@ -1,0 +1,5 @@
+package JavaConfig;
+
+public class DataSourceConfig {
+
+}

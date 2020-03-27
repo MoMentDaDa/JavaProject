@@ -1,0 +1,27 @@
+package Session;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+@WebServlet("/session/s2")
+@SuppressWarnings("all")
+public class SessionUse2 extends HttpServlet {
+	@Override
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.write("从s1中获取session值");
+		// 获取到从s1 存进去的Ssession值
+		HttpSession getSession = request.getSession();
+		String value = (String) getSession.getAttribute("name");
+		out.write(value);
+	}
+}

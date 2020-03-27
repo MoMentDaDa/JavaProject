@@ -1,0 +1,63 @@
+package SessionApply;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import CookieApply.Book;
+
+@WebServlet("/session/shop")
+@SuppressWarnings("all")
+public class SessionUse extends HttpServlet {
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		resp.setContentType("text/html;charset=UTF-8");
+		PrintWriter w = resp.getWriter();
+		// 拿到数据库所有的书
+		LinkedHashMap<String, Book> DB = Book.getAll();
+		Set<Map.Entry<String, Book>> entry = DB.entrySet();
+		// 显示所有的书到网页上
+		for (Map.Entry<String, Book> stringBookEntry : entry) {
+			Book book = stringBookEntry.getValue();
+			w.write("<a href=/04/showbooks/datils?id=" + book.getId() + ">" + book.getId() + "   " + book.getName() + "</a>");
+			w.write("<br/>");
+		}
+		w.write("您曾经浏览过的商品：");
+		w.write("<br/>");
+
+		// 显示用户浏览过的商品
+		Cookie[] cookies = req.getCookies();
+		if (cookies == null) {
+			w.write("你最近没有浏览商品：<br/>");
+		} else {
+			for (int i = 0; i < cookies.length; i++) {
+				if (cookies[i].getName().equals("bookHistory")) {
+					// 获取到的bookHistory是2_3_1之类的
+					String bookHistory = cookies[i].getValue();
+					// 拆解成每一个id值
+					String[] ids = bookHistory.split("\\_");
+					// 得到每一个id值
+					for (String id : ids) {
+						// 通过id找到每一本书
+						Book book = (Book) Book.getAll().get(id);
+						w.write(book.getName());
+						w.write("<br/>");
+					}
+				}
+			}
+		}
+		w.write("清除历史记录");
+		w.write("<a href=/04/showbooks/datils?id=-1>" + "清除历史记录 " + "</a>");
+		w.write("<br/>");
+	}
+}

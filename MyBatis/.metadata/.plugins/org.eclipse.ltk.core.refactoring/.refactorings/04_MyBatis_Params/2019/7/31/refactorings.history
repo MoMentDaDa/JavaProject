@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.wang.Object.User&apos; to &apos;Mouse&apos;&#x0D;&#x0A;- Original project: &apos;3_MyBatis_ResultMap&apos;&#x0D;&#x0A;- Original element: &apos;com.wang.Object.User&apos;&#x0D;&#x0A;- Renamed element: &apos;com.wang.Object.Mouse&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;User&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.wang.Object{User.java[User" matchStrategy="1" name="Mouse" qualified="false" references="true" similarDeclarations="false" stamp="1564558376634" textual="false" version="1.0"/>
+</session>
